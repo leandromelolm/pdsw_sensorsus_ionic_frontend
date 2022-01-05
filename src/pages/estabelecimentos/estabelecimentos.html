@@ -8,5 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-<p>Página de estabelecimentos</p>
+  <ion-list>
+    <button ion-item *ngFor="let item of items">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/hospital.png">
+      </ion-thumbnail>
+      <h2>{{item.nome}}</h2>
+      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>      
+    </button>
+  </ion-list>
 </ion-content>

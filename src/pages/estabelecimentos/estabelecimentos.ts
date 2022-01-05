@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 
 @IonicPage()
@@ -8,6 +9,8 @@ import { EstabelecimentoService } from '../../services/domain/estabelecimento.se
   templateUrl: 'estabelecimentos.html',
 })
 export class EstabelecimentosPage {
+
+  items: EstabelecimentoDTO[];
 
   constructor(
     public navCtrl: NavController, 
@@ -19,6 +22,7 @@ export class EstabelecimentosPage {
     this.estabelecimentService.findAll()
       .subscribe(response =>{
         console.log(response);
+        this.items = response;
       },
       error => {
         console.log(error);
