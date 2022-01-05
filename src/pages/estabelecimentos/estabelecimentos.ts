@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 
 @IonicPage()
 @Component({
@@ -8,11 +9,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EstabelecimentosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public estabelecimentService: EstabelecimentoService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EstabelecimentosPage');
+    this.estabelecimentService.findAll()
+      .subscribe(response =>{
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      })
+
   }
 
 }
