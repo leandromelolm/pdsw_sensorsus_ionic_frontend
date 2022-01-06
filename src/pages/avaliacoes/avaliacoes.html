@@ -10,9 +10,9 @@
 <ion-content padding>
 
   <ion-list>
-    <button ion-item *ngFor="let item of items">
-      <h2> rating {{item.classificacao}}</h2>      
-      <p>{{item.dataCriacao}}</p>
+    <button ion-item *ngFor="let item of items">            
+      <h2>{{item.apelido}}</h2>
+      <p>rating {{item.classificacao}} • {{item.dataCriacao}} </p> 
       <p>Comentário:</p>      
       <ion-card>   
         <ion-card-content>
@@ -20,9 +20,7 @@
             {{item.descricao}}
           </p>
         </ion-card-content>
-      </ion-card>
-      <p>{{item.apelido}}</p>      
+      </ion-card>                
     </button>
   </ion-list>
-
 </ion-content>
