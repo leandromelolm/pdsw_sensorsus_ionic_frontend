@@ -30,8 +30,8 @@ export class EstabelecimentosPage {
        })
   };
 
-  showAvaliacoes(){
-    this.navCtrl.push('AvaliacoesPage')
+  showAvaliacoes(estabelecimento_id : string){
+    this.navCtrl.push('AvaliacoesPage', {estabelecimento_id : estabelecimento_id});
   }
 
 }
