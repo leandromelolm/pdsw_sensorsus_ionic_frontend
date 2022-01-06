@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
+import { AvaliacoesPage } from '../avaliacoes/avaliacoes';
 
 @IonicPage()
 @Component({
@@ -27,7 +28,10 @@ export class EstabelecimentosPage {
       error => {
         console.log(error);
       })
+  }
 
+  showAvaliacoes(){
+    this.navCtrl.push('AvaliacoesPage')
   }
 
 }
