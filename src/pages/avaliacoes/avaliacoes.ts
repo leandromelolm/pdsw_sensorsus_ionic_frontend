@@ -13,11 +13,14 @@ import { AvaliacaoService } from '../../services/domain/avaliacao.service';
 export class AvaliacoesPage {
 
   items : AvaliacaoDTO[];
+  detail: string = "avaliacoes";  
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public avaliacaoService: AvaliacaoService) {
+    public avaliacaoService: AvaliacaoService,
+    ) {
+     
   }
 
   ionViewDidLoad() {

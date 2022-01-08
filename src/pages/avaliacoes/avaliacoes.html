@@ -1,60 +1,80 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar no-border-bottom>
     <button ion-button menuToggle>
-      <ion-icon class="iconYellow" name="menu"></ion-icon>
+      <ion-icon class="iconMenu" name="menu"></ion-icon>
     </button>
     <ion-title>Detalhes</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="detail">
+      <ion-segment-button value="avaliacoes">
+        Avaliações
+      </ion-segment-button>
+      <ion-segment-button value="informacoes">
+        Informações
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <div [ngSwitch]="detail">
+    
+    <ion-list *ngSwitchCase="'avaliacoes'">
+      <div class="divComentar">
+        <a>Compartilhe sua experiência</a>
+        <button ion-button block>Comentar</button>
+      </div>
+      <button ion-item *ngFor="let item of items">
+        <h2>{{item.apelido}}</h2>
+        <span *ngIf="item.classificacao >= 1">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="item.classificacao >= 2">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="item.classificacao >= 3">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="item.classificacao >= 4">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="item.classificacao >= 5">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="1 > item.classificacao">
+          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        </span>
+        <span *ngIf="2 > item.classificacao">
+          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        </span>
+        <span *ngIf="3 > item.classificacao">
+          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        </span>
+        <span *ngIf="4 > item.classificacao">
+          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        </span>
+        <span *ngIf="5 > item.classificacao">
+          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        </span>
+        <!-- <a>{{item.classificacao}}</a> -->
+        <a> • {{item.dataCriacao}} </a>
 
-  <ion-list>
-    <button ion-item *ngFor="let item of items">            
-      <h2>{{item.apelido}}</h2>
-      
-      <span *ngIf="item.classificacao >= 1">
-        <ion-icon class="iconYellow" name="star"></ion-icon>        
-      </span>
-      <span *ngIf="item.classificacao >= 2">
-        <ion-icon class="iconYellow" name="star"></ion-icon>        
-      </span>
-      <span *ngIf="item.classificacao >= 3">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
-      <span *ngIf="item.classificacao >= 4">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
-      <span *ngIf="item.classificacao >= 5">
-        <ion-icon class="iconYellow" name="star"></ion-icon>        
-      </span>
+        <p>Comentário:</p>
+        <ion-card>
+          <ion-card-content>
+            <p>
+              {{item.descricao}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </button>
+    </ion-list>
 
-      <span *ngIf="1 > item.classificacao">        
-        <ion-icon class="iconGrey" name="star-outline"></ion-icon>
-      </span>
-      <span *ngIf="2 > item.classificacao">
-        <ion-icon class="iconGrey" name="star-outline"></ion-icon>        
-      </span>
-      <span *ngIf="3 > item.classificacao">
-        <ion-icon class="iconGrey" name="star-outline"></ion-icon> 
-      </span>
-      <span *ngIf="4 > item.classificacao">
-        <ion-icon class="iconGrey" name="star-outline"></ion-icon> 
-      </span>
-      <span *ngIf="5 > item.classificacao">
-        <ion-icon class="iconGrey" name="star-outline"></ion-icon>        
-      </span>
-      <!-- <a>{{item.classificacao}}</a> -->
-      <a> • {{item.dataCriacao}} </a>     
+    <ion-list *ngSwitchCase="'informacoes'">
+      <h2>Endereço aqui</h2>
+    </ion-list>
 
-      <p>Comentário:</p>      
-      <ion-card>   
-        <ion-card-content>
-          <p>
-            {{item.descricao}}
-          </p>
-        </ion-card-content>
-      </ion-card>                
-    </button>
-  </ion-list>
+  </div>
 </ion-content>
