@@ -12,6 +12,6 @@ export class EstabelecimentoService{
 
     findAll() : Observable<EstabelecimentoDTO[]>{
         // return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos`); //endpoint paginado
-        return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos/enderecos`); //endpoint sem paginação
+        return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos/detalhes`); //endpoint sem paginação
     }    
 }
