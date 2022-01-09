@@ -73,7 +73,22 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'informacoes'">
-      <h2>Endereço aqui</h2>
+      <h2>{{e?.nome}}</h2>      
+      <ion-card>
+        <ion-card-content>          
+          <p>Códico CNES: {{e?.codCnes}}</p>
+          <p>Descrição: {{e?.descricao}}</p>
+          <p>Logradouro: {{e?.endereco.logradouro}}, {{e?.endereco.numero}}</p>
+          <p>Bairro: {{e?.endereco.bairro}}</p>
+          <p>complemento: {{e?.endereco.complemento}}</p>
+          <p>Cidade: {{e?.endereco.cidade.nome}}</p>
+          <p>Estado: {{e?.endereco.cidade.estado.nome}}</p>
+          <p>Cep: {{e?.endereco.cep}}</p>
+          <p>Natureza Jurídica: {{e?.naturezaJuridica}}</p>
+          <p>Orgão Gestor: {{e?.orgaoGestor}}</p>
+          <p>Telefones: {{e?.telefones}}</p>
+        </ion-card-content>
+      </ion-card>
     </ion-list>
 
   </div>
