@@ -25,10 +25,8 @@ export class EstabelecimentosPage {
          console.log(response);
          this.items = response;
        },
-       error => {
-         console.log(error);
-       })
-  };
+       error => {});
+  }
 
   showAvaliacoes(estabelecimento_id : string){
     this.navCtrl.push('AvaliacoesPage', {estabelecimento_id : estabelecimento_id});
