@@ -3,15 +3,16 @@ import { IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-an
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
+import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 
 
 
 @IonicPage()
 @Component({
-  selector: 'page-avaliacoes',
-  templateUrl: 'avaliacoes.html',
+  selector: 'page-estab-detail',
+  templateUrl: 'estab-detail.html',
 })
-export class AvaliacoesPage {
+export class EstabDetailPage {
 
   items : AvaliacaoDTO[];
   e : EstabelecimentoDTO;
@@ -21,6 +22,7 @@ export class AvaliacoesPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public avaliacaoService: AvaliacaoService,
+    public estabService: EstabelecimentoService,
     ) {
      
   }
@@ -39,7 +41,7 @@ export class AvaliacoesPage {
   }
   estabelecimentoEnderecoLoad(){
     let estabelecimento_id  = this.navParams.get('estabelecimento_id')
-    this.avaliacaoService.findById(estabelecimento_id)
+    this.estabService.findById(estabelecimento_id)
     .subscribe(response =>{
       console.log(response);
       this.e = response;
