@@ -22,10 +22,12 @@
   <div [ngSwitch]="detail">
     
     <ion-list *ngSwitchCase="'avaliacoes'">
+
       <div class="divComentar">
         <a>Compartilhe sua experiência</a>
-        <button ion-button block>Avaliar</button>
+        <button ion-button block inline (click)="avaliar(e)">Avaliar</button>
       </div>
+
       <button ion-item *ngFor="let item of items">
         <h2>{{item.apelido}}</h2>
         <span *ngIf="item.classificacao >= 1">

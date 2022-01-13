@@ -4,8 +4,7 @@ import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
-
-
+import { AvaliarPage } from '../avaliar/avaliar';
 
 @IonicPage()
 @Component({
@@ -46,10 +45,11 @@ export class EstabDetailPage {
       console.log(response);
       this.e = response;
       
-    })
-    
+    })    
   }
-
+  avaliar(e: EstabelecimentoDTO){
+    this.navCtrl.push('AvaliarPage',{estab : e});
+  }
 }
 
 
