@@ -77,29 +77,3 @@ export class EstabDetailPage {
   }
 
 }
-
-
-
-
-// avaliar(e: EstabelecimentoDTO){
-//   let localUser = this.storage.getLocalUser();
-//   if (localUser && localUser.email) {
-//     this.navCtrl.push('AvaliarPage',{estab : e});
-//   }else{
-//     this.navCtrl.setRoot('HomePage');
-//   }
-      
-// } 
-
-
-
-// {
-//   "idAvaliacao": 4,
-//   "estabelecimentoId": 2,
-//   "nomeEstabelecimento": "Hospital Wakanda ",
-//   "dataCriacao": "23/11/2021 14:10",
-//   "descricao": "Foi bom o atendimento, mas poderia ser melhor",
-//   "classificacao": 3.0,
-//   "usuarioId": 4,
-//   "apelido": "Dali4"
-// }
