@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UsuarioDTO } from '../../model/usuario.dto';
 import { UsuarioService } from '../../services/domain/usuario.service';
 import { StorageService } from '../../services/storage.service';
@@ -17,7 +17,8 @@ export class ProfilePage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public usuarioService: UsuarioService) {
+    public usuarioService: UsuarioService,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -27,7 +28,36 @@ export class ProfilePage {
         .subscribe(response => {
           this.usuario = response;          
         },
-        error => {});
+        error => {});   
+    }
+    else{
+      this.navCtrl.setRoot('EstabelecimentosPage');
+      this.AlertNoLogin();
     }
   }
+
+  AlertNoLogin(){
+    let alert = this.alertCtrl.create({
+      title: 'Precisa fazer o Login!',
+      message: 'Faça o login ou cadastre-se!',
+      enableBackdropDismiss: false,
+      buttons:[
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: () =>{
+            this.navCtrl.setRoot('HomePage');
+          }
+        } 
+      ]
+    });
+    alert.present();
+  }
+
 }
