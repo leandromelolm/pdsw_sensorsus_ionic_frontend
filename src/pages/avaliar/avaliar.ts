@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { NovaAvaliacaoDTO } from '../../model/nova_avaliacao.dto';
 import {ChangeDetectorRef } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { UsuarioService } from '../../services/domain/usuario.service';
 import { UsuarioDTO } from '../../model/usuario.dto';
+import { AvaliacaoService } from '../../services/domain/avaliacao.service';
+import { a } from '@angular/core/src/render3';
 
 @IonicPage()
 @Component({
@@ -30,7 +32,9 @@ export class AvaliarPage {
     public navParams: NavParams,
     private cdref: ChangeDetectorRef,
     public storage: StorageService,
-    public usuarioService: UsuarioService) {  
+    public usuarioService: UsuarioService,
+    public avaliacaoService: AvaliacaoService,
+    public alertCtrl: AlertController) {  
   }
 
   ngAfterContentChecked() {
@@ -54,11 +58,34 @@ export class AvaliarPage {
 
   avaliarEstab(){
     console.log(this.novaAvaliacao);
+    this.avaliacaoService.insert(this.novaAvaliacao)
+    .subscribe(response =>{
+      this.showInsertOk(this.novaAvaliacao.estabelecimentoId);
+    },
+    error => {});
   }
 
   back() {
     this.navCtrl.pop();
   }
+
+  showInsertOk(estabelecimento_id : number){
+    let alert = this.alertCtrl.create({
+      title: 'Sucesso!',
+      message: 'Avaliação cadastrada com sucesso!',
+      enableBackdropDismiss: false,
+      buttons:[
+        {
+          text: 'Ok',
+          handler: () =>{
+            // this.navCtrl.pop();
+            this.navCtrl.setRoot('EstabDetailPage', {estabelecimento_id : estabelecimento_id});
+          }
+        }
+      ]
+    });
+    alert.present();
+  } 
 
 }
 
