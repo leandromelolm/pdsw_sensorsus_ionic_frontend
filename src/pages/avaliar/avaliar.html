@@ -6,32 +6,25 @@
 
 <ion-content padding>
   <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">
-
-    <!-- <ion-item>
-      <ion-label stacked>Classificação*</ion-label>
-      <ion-select name="classificacao">
-        <ion-option value="1">1</ion-option>        
-        <ion-option value="2">2</ion-option>
-        <ion-option value="3">3</ion-option>
-        <ion-option value="4">4</ion-option>
-        <ion-option value="5">5</ion-option>        
-      </ion-select>
-    </ion-item> -->
-
     <div class="title">
       <h3>{{estabelecimento?.nome}}</h3>
     </div>
     <ion-card>
       <ion-card-content>
+        <div class="codigoEstabId" style="display: none;">
+          <ion-item>
+            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"
+              name="estabelecimentoId" readonly="true"></ion-input>
+          </ion-item>
+        </div>
         <p>Código: {{estabelecimento?.id}}</p>
-        <p>Códico CNES: {{estabelecimento?.codCnes}}</p>
+        <p>CNES: {{estabelecimento?.codCnes}}</p>
         <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>
         <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>
       </ion-card-content>
     </ion-card>
-    
     <ion-item>
-      <ion-label>Classificação (Nota)</ion-label>
+      <ion-label>Classificação</ion-label>
       <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">
         <ion-option value="1">1 &#9733; </ion-option>
         <ion-option value="2">2 &#9733;&#9733;</ion-option>
@@ -40,13 +33,24 @@
         <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>
       </ion-select>
     </ion-item>
-
     <ion-item>
       <ion-label stacked>Comentário*</ion-label>
-      <ion-input [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text"></ion-input>
+      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>
     </ion-item>
-
     <button ion-button block type="submit">Salvar Avaliação</button>
     <button ion-button block outline (click)="back()">Voltar</button>
   </form>
 </ion-content>
+
+
+
+<!-- <ion-item>
+      <ion-label stacked>Classificação*</ion-label>
+      <ion-select name="classificacao">
+        <ion-option value="1">1</ion-option>        
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>        
+      </ion-select>
+</ion-item> -->
