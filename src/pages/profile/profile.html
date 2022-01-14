@@ -8,5 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-{{ email }}
+<ion-avatar>
+  <img class="circle" [src]="'assets/imgs/avatar-blank.png'">
+</ion-avatar>
+<h2 text-center>{{usuario?.nomeCompleto}}</h2>
+<p text-center>Apelido: {{usuario?.nickname}}</p>
+<p text-center>{{usuario?.email}}</p>
 </ion-content>
