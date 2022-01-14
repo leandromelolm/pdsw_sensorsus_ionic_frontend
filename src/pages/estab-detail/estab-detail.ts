@@ -66,11 +66,18 @@ export class EstabDetailPage {
       enableBackdropDismiss: false,
       buttons:[
         {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
           text: 'Ok',
           handler: () =>{
             this.navCtrl.setRoot('HomePage');
           }
-        }
+        } 
       ]
     });
     alert.present();
