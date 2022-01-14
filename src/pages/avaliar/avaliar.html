@@ -11,12 +11,18 @@
     </div>
     <ion-card>
       <ion-card-content>
+
         <div class="codigoEstabId" style="display: none;">
           <ion-item>
             <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"
               name="estabelecimentoId" readonly="true"></ion-input>
           </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}"
+              name="estabelecimentoId" readonly="true"></ion-input>
+          </ion-item>
         </div>
+        
         <p>Código: {{estabelecimento?.id}}</p>
         <p>CNES: {{estabelecimento?.codCnes}}</p>
         <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>

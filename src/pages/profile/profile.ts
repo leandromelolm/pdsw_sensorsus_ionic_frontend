@@ -11,7 +11,6 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ProfilePage {
 
-  // email: string;
   usuario: UsuarioDTO;
 
   constructor(
