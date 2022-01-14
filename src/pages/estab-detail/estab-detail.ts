@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-angular';
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
+import { StorageService } from '../../services/storage.service';
 import { AvaliarPage } from '../avaliar/avaliar';
 
 @IonicPage()
@@ -22,6 +23,8 @@ export class EstabDetailPage {
     public navParams: NavParams,
     public avaliacaoService: AvaliacaoService,
     public estabService: EstabelecimentoService,
+    public storage: StorageService,
+    public alertCtrl: AlertController
     ) {
      
   }
@@ -48,9 +51,45 @@ export class EstabDetailPage {
     })    
   }
   avaliar(e: EstabelecimentoDTO){
-    this.navCtrl.push('AvaliarPage',{estab : e});
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+      this.navCtrl.push('AvaliarPage',{estab : e});
+    }else{
+      this.showNoLogin();
+    }   
+  }  
+
+  showNoLogin(){
+    let alert = this.alertCtrl.create({
+      title: 'Precisa fazer o Login!',
+      message: 'Faça o login ou cadastre-se!',
+      enableBackdropDismiss: false,
+      buttons:[
+        {
+          text: 'Ok',
+          handler: () =>{
+            this.navCtrl.setRoot('HomePage');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
+
 }
+
+
+
+
+// avaliar(e: EstabelecimentoDTO){
+//   let localUser = this.storage.getLocalUser();
+//   if (localUser && localUser.email) {
+//     this.navCtrl.push('AvaliarPage',{estab : e});
+//   }else{
+//     this.navCtrl.setRoot('HomePage');
+//   }
+      
+// } 
 
 
 
