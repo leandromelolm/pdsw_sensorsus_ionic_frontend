@@ -45,7 +45,7 @@ export class MyApp {
 
     switch (page.title) {
       case 'Sair':
-      this.auth.logout();
+      this.auth.AlertLogoutConfirm();
       this.nav.setRoot('EstabelecimentosPage');
       break;
 
