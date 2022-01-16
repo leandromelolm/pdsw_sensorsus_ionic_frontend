@@ -34,7 +34,7 @@
 
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
-      <ion-input formControlName="senha" type="text" placeholder="Senha"></ion-input>
+      <ion-input formControlName="senha" type="password" placeholder="Senha"></ion-input>
     </ion-item>
     <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>
       Senha inválido
@@ -42,7 +42,7 @@
 
     <ion-item>
       <ion-label stacked>Redigite a senha*</ion-label>
-      <ion-input formControlName="senha_confirmar" name="senha_confirmar" type="text" placeholder="Confirmar senha">
+      <ion-input formControlName="senha_confirmar" name="senha_confirmar" type="password" placeholder="Confirmar senha">
       </ion-input>
     </ion-item>
 
