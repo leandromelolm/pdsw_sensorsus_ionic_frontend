@@ -1,5 +1,6 @@
 export interface UsuarioDTO {
     nomeCompleto : string;
     nickName : string;
-    email : string
+    email : string;
+    senha: string
 }

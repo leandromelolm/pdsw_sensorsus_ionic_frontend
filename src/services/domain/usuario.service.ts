@@ -14,4 +14,11 @@ export class UsuarioService {
     findByEmail(email: string) : Observable<UsuarioDTO> {
         return this.http.get<UsuarioDTO>(`${API_CONFIG.baseUrl}/usuarios/email?value=${email}`);
     }
+
+    insert(obj: UsuarioDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/usuarios/new`, obj,{ observe: 'response', responseType: 'text'}
+        );
+    }
+    
 }
