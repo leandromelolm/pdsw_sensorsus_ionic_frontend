@@ -12,17 +12,17 @@ export class SignupPage {
   formGroup: FormGroup;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder) {
 
-      this.formGroup = this.formBuilder.group({
-        nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
-        apelido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
-        email: ['', [Validators.required, Validators.email]],
-        senha : ['', [Validators.required]],
-        senha_confirmar : ['', [Validators.required]]
-      });
+    this.formGroup = this.formBuilder.group({
+      nome: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]],
+      apelido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required]],
+      senha_confirmar: ['', [Validators.required]]
+    });
   }
 
   signupUser() {

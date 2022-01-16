@@ -5,29 +5,39 @@
 </ion-header>
 
 <ion-content padding>
-<form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
-  <ion-item>
-    <ion-label stacked>Nome*</ion-label>
-    <ion-input formControlName="nome" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Apelido*</ion-label>
-    <ion-input formControlName="apelido" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Email*</ion-label>
-    <ion-input formControlName="email" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Senha*</ion-label>      
-    <ion-input formControlName="senha" type="password" placeholder="Senha"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Confirmar a senha*</ion-label>      
-    <ion-input formControlName="senha_confirmar" type="password"></ion-input>
-  </ion-item>
-  
-  <button ion-button block (click)="submit">Criar conta</button>
-  
-</form>
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Nome*</ion-label>
+      <ion-input formControlName="nome" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Nome inválido
+    </p>
+    <ion-item>
+      <ion-label stacked>Apelido*</ion-label>
+      <ion-input formControlName="apelido" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls['apelido'].dirty && formGroup.controls['apelido'].errors" margin-left>
+      Apelido inválido</p>
+    <ion-item>
+      <ion-label stacked>Email*</ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Email
+      inválido</p>
+    <ion-item>
+      <ion-label stacked>Senha*</ion-label>
+      <ion-input formControlName="senha" type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>Senha
+      inválido</p>
+    <ion-item>
+      <ion-label stacked>Confirmar a senha*</ion-label>
+      <ion-input formControlName="senha_confirmar" type="password" placeholder="Confirmar senha"></ion-input>
+    </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.senha_confirmar.dirty && formGroup.controls.senha_confirmar.errors"
+      margin-left>Senha inválido</p>
+
+    <button ion-button block (click)="submit" [disabled]="formGroup.invalid">Criar conta</button>
+
+  </form>
 </ion-content>
