@@ -5,19 +5,29 @@
 </ion-header>
 
 <ion-content padding>
-<form (ngSubmit)="signupUser(); $event.preventDefault()">
+<form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
   <ion-item>
     <ion-label stacked>Nome*</ion-label>
-    <ion-input name="nome" type="text"></ion-input>
+    <ion-input formControlName="nome" type="text"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Apelido*</ion-label>
-    <ion-input name="apelido" type="text"></ion-input>
+    <ion-input formControlName="apelido" type="text"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Email*</ion-label>
-    <ion-input name="email" type="text"></ion-input>
+    <ion-input formControlName="email" type="text"></ion-input>
   </ion-item>
-  <button ion-button block type="submit">Criar conta</button>
+  <ion-item>
+    <ion-label stacked>Senha*</ion-label>      
+    <ion-input formControlName="senha" type="password" placeholder="Senha"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Confirmar a senha*</ion-label>      
+    <ion-input formControlName="senha_confirmar" type="password"></ion-input>
+  </ion-item>
+  
+  <button ion-button block (click)="submit">Criar conta</button>
+  
 </form>
 </ion-content>
