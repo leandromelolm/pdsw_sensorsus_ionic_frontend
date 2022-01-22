@@ -15,6 +15,7 @@
       </ion-thumbnail>
       <h2>{{item.nome}}</h2>
       <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>
+      <a>{{item.score}}</a>
       <span *ngIf="item.score >= 1">
         <ion-icon class="iconYellow" name="star"></ion-icon>
       </span>
@@ -45,7 +46,7 @@
       <span *ngIf="5 > item.score">
         <ion-icon class="iconGrey" name="star-outline"></ion-icon>
       </span>
-      <a>{{item.score}} ({{item.count}})</a>
+      <a>({{item.count}})</a>
     </button>
   </ion-list>
 </ion-content>

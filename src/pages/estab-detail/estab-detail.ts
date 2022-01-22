@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { AlertController, IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 import { StorageService } from '../../services/storage.service';
-import { AvaliarPage } from '../avaliar/avaliar';
 
 @IonicPage()
 @Component({

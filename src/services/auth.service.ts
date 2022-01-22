@@ -1,4 +1,4 @@
-import { Injectable, ViewChild } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { CredenciaisDTO } from "../model/credenciais.dto";
 import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../config/api.config";

@@ -14,6 +14,8 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { UsuarioService } from '../services/domain/usuario.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { RecaptchaLoaderService, RecaptchaModule } from 'ng-recaptcha';
+import { AvaliarPage } from '../pages/avaliar/avaliar';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp),       
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +40,10 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    UsuarioService
+    UsuarioService,    
+    AvaliarPage,
+    RecaptchaModule,
+    RecaptchaLoaderService
   ]
 })
 export class AppModule {}

@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { NovaAvaliacaoDTO } from '../../model/nova_avaliacao.dto';
-import {ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { UsuarioService } from '../../services/domain/usuario.service';
 import { UsuarioDTO } from '../../model/usuario.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
-import { a } from '@angular/core/src/render3';
+
+import { environment } from '../../environment/environment';
 
 @IonicPage()
 @Component({
@@ -16,25 +17,42 @@ import { a } from '@angular/core/src/render3';
 })
 export class AvaliarPage {
 
-  estabelecimento : EstabelecimentoDTO;
-  eId : Number;
+  isCaptchaValid = false;
+
+  captcha: string;
+
+  estabelecimento: EstabelecimentoDTO;
+  eId: Number;
   usuario: UsuarioDTO;
 
-  novaAvaliacao : NovaAvaliacaoDTO = {
+  novaAvaliacao: NovaAvaliacaoDTO = {
     descricao: "",
-    classificacao: null,  
-    usuarioEmail:"",  
+    classificacao: null,
+    usuarioEmail: "",
     estabelecimentoId: null
   };
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private cdref: ChangeDetectorRef,
     public storage: StorageService,
     public usuarioService: UsuarioService,
     public avaliacaoService: AvaliacaoService,
-    public alertCtrl: AlertController) {  
+    public alertCtrl: AlertController) {
+
+    this.captcha = '';
+  }
+
+  get siteKey() {
+    return environment.recaptcha.siteKey;
+  }
+
+  captchaResolved(captchaResponse: string, ev: any) {
+    console.log("Captha resolvido");
+    this.isCaptchaValid = true;
+
+    this.captcha = captchaResponse;
   }
 
   ngAfterContentChecked() {
@@ -42,51 +60,50 @@ export class AvaliarPage {
   }
 
   ionViewDidLoad() {
-    let estab  = this.navParams.get('estab')
+    let estab = this.navParams.get('estab')
     console.log(estab)
     this.estabelecimento = estab;
-    
+
     let localUser = this.storage.getLocalUser();
-    if (localUser && localUser.email) {      
+    if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.usuario = response;          
+          this.usuario = response;
         },
-        error => {});
+          error => { });
     }
   }
 
-  avaliarEstab(){
+  avaliarEstab() {
     console.log(this.novaAvaliacao);
     this.avaliacaoService.insert(this.novaAvaliacao)
-    .subscribe(response =>{
-      this.back();
-      this.showInsertOk(this.novaAvaliacao.estabelecimentoId);
-    },
-    error => {});
+      .subscribe(response => {
+        this.back();
+        this.showInsertOk(this.novaAvaliacao.estabelecimentoId);
+      },
+        error => { });
   }
 
   back() {
     this.navCtrl.pop();
   }
 
-  showInsertOk(estabelecimento_id : number){
+  showInsertOk(estabelecimento_id: number) {
     let alert = this.alertCtrl.create({
       title: 'Sucesso!',
       message: 'Avaliação cadastrada com sucesso!',
       enableBackdropDismiss: false,
-      buttons:[
+      buttons: [
         {
           text: 'Ok',
-          handler: () =>{
+          handler: () => {
             // this.navCtrl.pop();
-            this.navCtrl.setRoot('EstabDetailPage', {estabelecimento_id : estabelecimento_id});
+            this.navCtrl.setRoot('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
           }
         }
       ]
     });
     alert.present();
-  } 
+  }
 
 }
-

@@ -18,17 +18,18 @@
               name="estabelecimentoId" readonly="true"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}"
-              name="estabelecimentoId" readonly="true"></ion-input>
+            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"
+              readonly="true"></ion-input>
           </ion-item>
         </div>
-        
+
         <p>Código: {{estabelecimento?.id}}</p>
         <p>CNES: {{estabelecimento?.codCnes}}</p>
         <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>
         <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>
-      </ion-card-content>
+      </ion-card-content>      
     </ion-card>
+
     <ion-item>
       <ion-label>Classificação</ion-label>
       <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">
@@ -39,24 +40,22 @@
         <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>
       </ion-select>
     </ion-item>
+    
     <ion-item>
-      <ion-label stacked>Comentário*</ion-label>
+      <ion-label stacked>Comentário</ion-label>
       <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>
     </ion-item>
-    <button ion-button block type="submit">Salvar Avaliação</button>    
+
+    <div class="recaptcha">
+      <p></p>
+      <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>
+      <a>
+        <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>
+      </a>
+    </div>
+    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>
+
   </form>
+
   <button ion-button block outline (click)="back()">Voltar</button>
 </ion-content>
-
-
-
-<!-- <ion-item>
-      <ion-label stacked>Classificação*</ion-label>
-      <ion-select name="classificacao">
-        <ion-option value="1">1</ion-option>        
-        <ion-option value="2">2</ion-option>
-        <ion-option value="3">3</ion-option>
-        <ion-option value="4">4</ion-option>
-        <ion-option value="5">5</ion-option>        
-      </ion-select>
-</ion-item> -->
