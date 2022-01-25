@@ -11,11 +11,11 @@ export class EstabelecimentoService{
     }
 
     findAll() : Observable<EstabelecimentoDTO[]>{
-        // return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos`); //endpoint paginado
-        return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos/detalhes`); //endpoint sem paginação
+        // return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos`); //rota paginada
+        return this.http.get<EstabelecimentoDTO[]>(`${API_CONFIG.baseUrl}/estabelecimentos/detalhes`); //rota sem paginação
     }
     
     findById(estabelecimento_id : string) {
-        return this.http.get<EstabelecimentoDTO>(`${API_CONFIG.baseUrl}/estabelecimentos/${estabelecimento_id}`);
+        return this.http.get<EstabelecimentoDTO>(`${API_CONFIG.baseUrl}/estabelecimentos/${estabelecimento_id}`); //rota sem paginação
     }
 }

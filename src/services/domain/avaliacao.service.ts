@@ -10,7 +10,7 @@ export class AvaliacaoService{
     }
 
     findByEstabelecimentoAvaliacao(estabelecimento_id : string){
-        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/id/?id=${estabelecimento_id}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/id/?id=${estabelecimento_id}`); // rota paginada
     }
 
     insert(obj : NovaAvaliacaoDTO){

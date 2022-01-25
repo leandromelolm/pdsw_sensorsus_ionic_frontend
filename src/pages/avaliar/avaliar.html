@@ -27,7 +27,7 @@
         <p>CNES: {{estabelecimento?.codCnes}}</p>
         <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>
         <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>
-      </ion-card-content>      
+      </ion-card-content>
     </ion-card>
 
     <ion-item>
@@ -40,19 +40,18 @@
         <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>
       </ion-select>
     </ion-item>
-    
+
     <ion-item>
       <ion-label stacked>Comentário</ion-label>
       <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>
     </ion-item>
-
-    <div class="recaptcha">
-      <p></p>
-      <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>
-      <a>
-        <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>
-      </a>
-    </div>
+    
+      <p></p>      
+        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>
+        <a>
+          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>
+        </a>      
+    
     <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>
 
   </form>

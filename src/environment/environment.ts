@@ -1,6 +1,7 @@
 export const environment = {
     recaptcha:{
-        siteKey: "RECAPTCHA_SITE_KEY_GOES_HERE"
+        // siteKey: "RECAPTCHA_SITE_KEY_GOES_HERE"
+        siteKey: "6LcADC0eAAAAAId0_AZxT6qivDEREVKWSz0bdKz2"
     }
 }
 
