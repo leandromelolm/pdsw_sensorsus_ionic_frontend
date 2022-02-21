@@ -4,7 +4,7 @@ Projeto para disciplina desenvolvimento de sistema web - frontend
 ### • Testar Versões instaladas ( Versões recomendadas para executar o projeto)
 ```
 npm -v
-  8.3.1
+  6.13.4
 
 node -v
   v10.19.0
