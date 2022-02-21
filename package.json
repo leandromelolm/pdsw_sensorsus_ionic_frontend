@@ -8,7 +8,13 @@
     "start": "ionic-app-scripts serve",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint"
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
+  "engines": {
+    "node": "10.19.0",
+    "npm": "6.13.4"    
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -25,17 +31,21 @@
     "@ionic-native/status-bar": "4.20.0",
     "@ionic/storage": "2.2.0",
     "angular2-jwt": "^0.2.3",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
     "ionic-angular": "3.9.9",
     "ionicons": "3.0.0",
+    "morgan": "^1.10.0",
     "ng-recaptcha": "^3.0.5",
     "ngx-captcha": "^3.1.2",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.29"
-  },
-  "devDependencies": {
+    "zone.js": "0.8.29",
     "@ionic/app-scripts": "3.2.4",
-    "typescript": "2.6.2"
+    "typescript": "2.6.2"    
+  },
+  "devDependencies": {    
   },
   "description": "An Ionic project"
 }
