@@ -14,9 +14,7 @@
   },
   "engines": {
     "node": "10.19.0",
-    "npm": "6.13.4",
-    "cordova": "7.1.0",
-    "ionic": "3.19.0"
+    "npm": "6.13.4"    
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -35,7 +33,7 @@
     "angular2-jwt": "^0.2.3",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "~4.17.3",
     "ionic-angular": "3.9.9",
     "ionicons": "3.0.0",
     "morgan": "^1.10.0",
