@@ -14,7 +14,9 @@
   },
   "engines": {
     "node": "10.19.0",
-    "npm": "6.13.4"
+    "npm": "6.13.4",
+    "cordova": "7.1.0",
+    "ionic": "3.19.0"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
