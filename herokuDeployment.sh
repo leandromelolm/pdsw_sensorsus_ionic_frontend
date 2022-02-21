@@ -1,4 +1,4 @@
 git add .
 git commit -am 'Heroku Deployment.'
-git push heroku main
+git push heroku master
 heroku open
