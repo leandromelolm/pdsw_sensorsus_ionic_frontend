@@ -37,8 +37,7 @@
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.29",
     "@ionic/app-scripts": "3.2.4",
-    "typescript": "2.6.2",
-    "node":"10.19.0"
+    "typescript": "2.6.2"    
   },
   "devDependencies": {    
   },
