@@ -46,6 +46,7 @@ var EstabelecimentosPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(156);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,30 +59,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var EstabelecimentosPage = /** @class */ (function () {
-    function EstabelecimentosPage(navCtrl, navParams, estabelecimentService) {
+    function EstabelecimentosPage(navCtrl, navParams, estabelecimentService, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.estabelecimentService = estabelecimentService;
+        this.loadingCtrl = loadingCtrl;
     }
     EstabelecimentosPage.prototype.ionViewDidLoad = function () {
         var _this = this;
+        var loader = this.presentLoading();
         this.estabelecimentService.findAll()
             .subscribe(function (response) {
-            console.log(response);
             _this.items = response;
+            loader.dismiss();
         }, function (error) { });
     };
     EstabelecimentosPage.prototype.showAvaliacoes = function (estabelecimento_id) {
         this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
     };
+    EstabelecimentosPage.prototype.presentLoading = function () {
+        var loader = this.loadingCtrl.create({
+            content: "Aguarde... Buscando dados do servidor..."
+        });
+        loader.present();
+        return loader;
+    };
     EstabelecimentosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estabelecimentos',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Estabelecimentos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>\n      <ion-thumbnail item-start>\n        <img src="assets/imgs/hospital.png">\n      </ion-thumbnail>\n      <h2>{{item.nome}}</h2>\n      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>\n      <a style="font-size:larger; font-weight:bold;">{{item.score}}</a>\n      <span *ngIf="item.score >= 1">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 2">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 3">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 4">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 5">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="1 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="2 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="3 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="4 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="5 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <a>({{item.count}})</a>\n    </button>\n  </ion-list>\n</ion-content>\n\n\n\n\n  <!-- <span *ngIf=" item.score >= 3">\n    <ion-icon class="iconYellow" name="star-half"></ion-icon>\n  </span> -->'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/,
+            selector: 'page-estabelecimentos',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Estabelecimentos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>\n      <ion-thumbnail item-start>\n        <img src="assets/imgs/hospital.png">\n      </ion-thumbnail>\n      <h2>{{item.nome}}</h2>\n      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>\n      <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>\n      <span *ngIf="item.score >= 1">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 2">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 3">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 4">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 5">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="1 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="2 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="3 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="4 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="5 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <a>({{item.count}})</a>\n    </button>\n  </ion-list>\n</ion-content>\n\n\n\n\n  <!-- <span *ngIf=" item.score >= 3">\n    <ion-icon class="iconYellow" name="star-half"></ion-icon>\n  </span> -->'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */]])
+            __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
     ], EstabelecimentosPage);
     return EstabelecimentosPage;
 }());
