@@ -3,4 +3,4 @@ git commit -am 'Heroku Deployment.'
 git push heroku master
 heroku open
 
-# executar dentro do projeto ./herokuDeployment.sh 
+# executar ./herokuDeployment.sh para fazer commit e subir atualização para o Heroku
