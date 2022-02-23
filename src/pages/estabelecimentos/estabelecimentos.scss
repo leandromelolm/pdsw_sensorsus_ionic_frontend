@@ -4,20 +4,39 @@ page-estabelecimentos {
         align-self: center;
         margin: auto;
         display: block;
-        padding: 5px;
+        padding: 1px;
+    }
+
+    .button{
+        margin-left: 0px;
+    }
+
+    .item-md {
+        padding-left: 0px;
     }
 
     ion-label {
         white-space: normal !important;
     }
+
     .iconYellow{
         color: #f4e424;
     }
+
     .iconGrey{
         color: #bdbdbd;
     }
-    .divComentar{
-        text-align: center;
+
+    .item-md {
+        font-size: 1.2rem;
     }
-    
+
+    .item-md ion-thumbnail img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .item-md ion-thumbnail[item-start] {
+        margin: 0px -5px -25px 0;
+    }
 }

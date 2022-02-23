@@ -25696,6 +25696,10 @@ ion-navbar.toolbar {
   min-height: 46px;
 }
 
+ion-app.md [padding] .scroll-content {
+  padding: 10px;
+}
+
 page-avaliar .title {
   margin: 15px;
 }
@@ -25722,7 +25726,15 @@ page-estabelecimentos img {
   align-self: center;
   margin: auto;
   display: block;
-  padding: 5px;
+  padding: 1px;
+}
+
+page-estabelecimentos .button {
+  margin-left: 0px;
+}
+
+page-estabelecimentos .item-md {
+  padding-left: 0px;
 }
 
 page-estabelecimentos ion-label {
@@ -25737,8 +25749,17 @@ page-estabelecimentos .iconGrey {
   color: #bdbdbd;
 }
 
-page-estabelecimentos .divComentar {
-  text-align: center;
+page-estabelecimentos .item-md {
+  font-size: 1.2rem;
+}
+
+page-estabelecimentos .item-md ion-thumbnail img {
+  width: 50px;
+  height: 50px;
+}
+
+page-estabelecimentos .item-md ion-thumbnail[item-start] {
+  margin: 0px -5px -25px 0;
 }
 
 page-home h3 {
