@@ -2,7 +2,7 @@ page-estabelecimentos {
     
     img{        
         align-self: center;
-        margin: auto;
+        margin: 0px 0px 0px 0px;
         display: block;
         padding: 1px;
     }
@@ -31,12 +31,22 @@ page-estabelecimentos {
         font-size: 1.2rem;
     }
 
+    .item-lg {
+        font-size: 1.2rem;
+    }
+
     .item-md ion-thumbnail img {
         width: 50px;
         height: 50px;
     }
 
     .item-md ion-thumbnail[item-start] {
-        margin: 0px -5px -25px 0;
+        margin: 0px 0px 0px 0px;
+    }   
+
+    .item-md ion-thumbnail {
+        margin: 0px 0px 0px 0px;
+        min-width: 55px;
+        min-height: 55px;
     }
 }
