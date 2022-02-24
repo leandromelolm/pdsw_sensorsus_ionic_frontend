@@ -1,6 +1,7 @@
 # pdsw_sensorsus_frontend_ionic
 Projeto para disciplina desenvolvimento de sistema web - frontend
 
+Aplicativo para avaliar estabelecimentos de saúde.
 
 https://sensorsus.herokuapp.com/
 
