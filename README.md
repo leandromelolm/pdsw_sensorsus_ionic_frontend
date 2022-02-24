@@ -4,6 +4,9 @@ Projeto para disciplina desenvolvimento de sistema web - frontend
 
 https://sensorsus.herokuapp.com/
 
+### rotas backend
+
+https://sensorsus-api.herokuapp.com/swagger-ui.html
 
 ### • Testar Versões instaladas ( Versões recomendadas para executar o projeto)
 ```
