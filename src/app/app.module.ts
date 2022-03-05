@@ -19,16 +19,16 @@ import { AvaliarPage } from '../pages/avaliar/avaliar';
 
 @NgModule({
   declarations: [
-    MyApp   
+    MyApp,    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),       
+    IonicModule.forRoot(MyApp),         
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp 
+    MyApp,
   ],
   providers: [
     StatusBar,
@@ -43,7 +43,8 @@ import { AvaliarPage } from '../pages/avaliar/avaliar';
     UsuarioService,    
     AvaliarPage,
     RecaptchaModule,
-    RecaptchaLoaderService
-  ]
+    RecaptchaLoaderService,
+    
+  ],  
 })
 export class AppModule {}

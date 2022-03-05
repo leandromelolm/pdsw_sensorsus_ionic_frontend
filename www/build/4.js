@@ -88,38 +88,14 @@ var EstabelecimentosPage = /** @class */ (function () {
     };
     EstabelecimentosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estabelecimentos',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Estabelecimentos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <button  class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>\n      <ion-thumbnail item-start>\n        <img src="assets/imgs/hospital.png">\n      </ion-thumbnail>\n      <h2>{{item.nome}}</h2>\n      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>\n      <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>\n      <span *ngIf="item.score >= 1">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 2">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 3">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 4">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 5">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="1 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="2 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="3 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="4 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="5 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <a>({{item.count}})</a>\n    </button>\n  </ion-list>\n</ion-content>\n\n\n\n\n  <!-- <span *ngIf=" item.score >= 3">\n    <ion-icon class="iconYellow" name="star-half"></ion-icon>\n  </span> -->'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/,
+            selector: 'page-estabelecimentos',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Estabelecimentos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-list>\n    <button  class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>\n      <ion-thumbnail item-start>\n        <img src="assets/imgs/hospital.png">\n      </ion-thumbnail>\n      <h2>{{item.nome}}</h2>\n      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>\n\n      <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>\n     \n      <span *ngIf="item.score > 0.1">\n        <span *ngIf="0.9 > item.score" >\n          <ion-icon class="iconYellow" name="star-half" ></ion-icon>\n        </span>\n      </span>\n      <span *ngIf="item.score >= 1">\n        <ion-icon class="iconYellow" name="star" ></ion-icon>\n      </span>\n\n      <span *ngIf="item.score > 1.1">\n        <span *ngIf="1.9 > item.score" >\n          <ion-icon class="iconYellow" name="star-half" ></ion-icon>\n        </span>\n      </span>\n      <span *ngIf="item.score >= 2">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n\n      <span *ngIf="item.score > 2.1">\n        <span *ngIf="2.9 > item.score" >\n          <ion-icon class="iconYellow" name="star-half" ></ion-icon>\n        </span>\n      </span>\n      <span *ngIf="item.score >= 3">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n\n      <span *ngIf="item.score > 3.1">\n        <span *ngIf="3.9 > item.score" >\n          <ion-icon class="iconYellow" name="star-half" ></ion-icon>\n        </span>\n      </span>\n      <span *ngIf="item.score >= 4">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n\n      <span *ngIf="item.score > 4.1">\n        <span *ngIf="4.9 > item.score" >\n          <ion-icon class="iconYellow" name="star-half" ></ion-icon>\n        </span>\n      </span>\n      <span *ngIf="item.score >= 5">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n\n\n      <!--star-outline - estrela apenas com contorno (sem preenchimento)-->\n\n      <span *ngIf="1 > item.score">\n        <span *ngIf="0.1 > item.score" >\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        \n      </span>\n      <span *ngIf="2 > item.score">\n        <span *ngIf="1.1 > item.score" >\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n      </span>\n\n      <span *ngIf="3 > item.score">\n        <span *ngIf="2.1 > item.score" >\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>      \n      </span>\n\n      <span *ngIf="4 > item.score">        \n        <span *ngIf="3.1 > item.score" >\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n      </span>\n\n      <span *ngIf="5 > item.score">\n        <span *ngIf="4.1 > item.score" >\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n      </span>\n\n      <a>({{item.count}})</a>\n\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]) === "function" && _d || Object])
     ], EstabelecimentosPage);
     return EstabelecimentosPage;
+    var _a, _b, _c, _d;
 }());
 
-// {
-//   id: 1,
-//   nome: "Hospital Springfield",
-//   codCnes: 3323,
-//   telefones: [],
-//   endereco: {
-//       id: 1,
-//       logradouro: "Avenida Principal",
-//       numero: 1000,
-//       bairro: "Bairro",
-//       complemento: "Proximo a Rodovia",
-//       cep: "70999000",
-//       cidade: {
-//           id: 4,
-//           nome: "Jaboatão",
-//           estado: {
-//               id: 1,
-//               nome: "PERNAMBUCO"
-//           }
-//       }
-//   }
-// } 
 //# sourceMappingURL=estabelecimentos.js.map
 
 /***/ })

@@ -481,7 +481,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */]
+                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -500,7 +500,7 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */]
+                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
@@ -515,8 +515,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_12__services_domain_usuario_service__["a" /* UsuarioService */],
                 __WEBPACK_IMPORTED_MODULE_15__pages_avaliar_avaliar__["a" /* AvaliarPage */],
                 __WEBPACK_IMPORTED_MODULE_14_ng_recaptcha__["RecaptchaModule"],
-                __WEBPACK_IMPORTED_MODULE_14_ng_recaptcha__["RecaptchaLoaderService"]
-            ]
+                __WEBPACK_IMPORTED_MODULE_14_ng_recaptcha__["RecaptchaLoaderService"],
+            ],
         })
     ], AppModule);
     return AppModule;

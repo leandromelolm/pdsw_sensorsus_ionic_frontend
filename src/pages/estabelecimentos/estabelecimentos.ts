@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, Input } from '@angular/core';
+import { IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -10,7 +10,7 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
   templateUrl: 'estabelecimentos.html',
 })
 export class EstabelecimentosPage {
-
+  
   items: EstabelecimentoDTO[];
 
   constructor(
@@ -41,29 +41,5 @@ export class EstabelecimentosPage {
     loader.present();
     return loader;
   }
-
+  
 }
-
-
-// {
-//   id: 1,
-//   nome: "Hospital Springfield",
-//   codCnes: 3323,
-//   telefones: [],
-//   endereco: {
-//       id: 1,
-//       logradouro: "Avenida Principal",
-//       numero: 1000,
-//       bairro: "Bairro",
-//       complemento: "Proximo a Rodovia",
-//       cep: "70999000",
-//       cidade: {
-//           id: 4,
-//           nome: "Jaboatão",
-//           estado: {
-//               id: 1,
-//               nome: "PERNAMBUCO"
-//           }
-//       }
-//   }
-// }
