@@ -1,28 +1,29 @@
-<ion-header>
-  <ion-navbar no-border-bottom>
-    <button ion-button menuToggle>
-      <ion-icon class="iconMenu" name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  <h3>SensorSus</h3>
 
-  <img src="assets/imgs/logo-sensorsus-hospital.png" alt="logo">
-
-  <form>
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Senha</ion-label>
-      <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
-    </ion-item>
-    <button ion-button block (click)="login()">Entrar</button>
-  </form>
+  <button ion-button block (click)="signinpage()">Entrar</button>
   <button ion-button block outline (click)="signup()">Registrar</button>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">
+      <h2>{{item.nomeEstabelecimento}}</h2>
+      <p>avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>
+      <p>Classificação: {{item.classificacao}}</p>      
+      <p>Comentário:</p>
+        <ion-card>
+          <ion-card-content>
+            <p>
+              {{item.descricao}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+    </button>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>  
 
 </ion-content>

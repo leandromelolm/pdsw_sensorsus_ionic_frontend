@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 691:
+/***/ 692:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstabDetailPageModule", function() { return EstabDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EstabelecimentosPageModule", function() { return EstabelecimentosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estab_detail__ = __webpack_require__(696);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__estabelecimentos__ = __webpack_require__(698);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EstabDetailPageModule = /** @class */ (function () {
-    function EstabDetailPageModule() {
+var EstabelecimentosPageModule = /** @class */ (function () {
+    function EstabelecimentosPageModule() {
     }
-    EstabDetailPageModule = __decorate([
+    EstabelecimentosPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__estab_detail__["a" /* EstabDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__estabelecimentos__["a" /* EstabelecimentosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estab_detail__["a" /* EstabDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__estabelecimentos__["a" /* EstabelecimentosPage */]),
             ],
         })
-    ], EstabDetailPageModule);
-    return EstabDetailPageModule;
+    ], EstabelecimentosPageModule);
+    return EstabelecimentosPageModule;
 }());
 
-//# sourceMappingURL=estab-detail.module.js.map
+//# sourceMappingURL=estabelecimentos.module.js.map
 
 /***/ }),
 
-/***/ 696:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstabDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EstabelecimentosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_avaliacao_service__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_estabelecimento_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_storage_service__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,86 +60,67 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var EstabDetailPage = /** @class */ (function () {
-    function EstabDetailPage(navCtrl, navParams, avaliacaoService, estabService, storage, alertCtrl) {
+var EstabelecimentosPage = /** @class */ (function () {
+    function EstabelecimentosPage(navCtrl, navParams, estabelecimentService, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.avaliacaoService = avaliacaoService;
-        this.estabService = estabService;
-        this.storage = storage;
-        this.alertCtrl = alertCtrl;
-        this.detail = "avaliacoes";
+        this.estabelecimentService = estabelecimentService;
+        this.loadingCtrl = loadingCtrl;
     }
-    EstabDetailPage.prototype.ionViewDidLoad = function () {
+    EstabelecimentosPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        var estabelecimento_id = this.navParams.get('estabelecimento_id');
-        this.avaliacaoService.findByEstabelecimentoAvaliacao(estabelecimento_id)
+        var loader = this.presentLoading();
+        this.estabelecimentService.findAll()
             .subscribe(function (response) {
-            console.log(response['content']);
-            _this.items = response['content'];
-            _this.estabelecimentoEnderecoLoad();
-        }, function (error) {
-            console.log(error);
+            _this.items = response;
+            loader.dismiss();
+        }, function (error) { });
+    };
+    EstabelecimentosPage.prototype.showAvaliacoes = function (estabelecimento_id) {
+        this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
+    };
+    EstabelecimentosPage.prototype.presentLoading = function () {
+        var loader = this.loadingCtrl.create({
+            content: "Aguarde... Buscando dados do servidor..."
         });
+        loader.present();
+        return loader;
     };
-    EstabDetailPage.prototype.estabelecimentoEnderecoLoad = function () {
-        var _this = this;
-        var estabelecimento_id = this.navParams.get('estabelecimento_id');
-        this.estabService.findById(estabelecimento_id)
-            .subscribe(function (response) {
-            console.log(response);
-            _this.e = response;
-        });
-    };
-    EstabDetailPage.prototype.avaliar = function (e) {
-        var localUser = this.storage.getLocalUser();
-        if (localUser && localUser.email) {
-            this.navCtrl.push('AvaliarPage', { estab: e });
-        }
-        else {
-            this.showNoLogin();
-        }
-    };
-    EstabDetailPage.prototype.showNoLogin = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Precisa fazer o Login!',
-            message: 'Faça o login ou cadastre-se!',
-            enableBackdropDismiss: false,
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Ok',
-                    handler: function () {
-                        _this.navCtrl.setRoot('HomePage');
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    EstabDetailPage = __decorate([
+    EstabelecimentosPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-estab-detail',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estab-detail/estab-detail.html"*/'<ion-header>\n  <ion-navbar no-border-bottom>\n    <button ion-button menuToggle>\n      <ion-icon class="iconMenu" name="menu"></ion-icon>\n    </button>\n    <ion-title>Detalhes</ion-title>\n  </ion-navbar>\n\n  <ion-toolbar no-border-top>\n    <ion-segment [(ngModel)]="detail">\n      <ion-segment-button value="avaliacoes">\n        Avaliações\n      </ion-segment-button>\n      <ion-segment-button value="informacoes">\n        Informações\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <div [ngSwitch]="detail">\n    \n    <ion-list *ngSwitchCase="\'avaliacoes\'">\n\n      <div class="divComentar">\n        <a>Compartilhe sua experiência</a>\n        <button ion-button block inline (click)="avaliar(e)">Avaliar</button>\n      </div>\n\n      <button ion-item *ngFor="let item of items">\n        <h2>{{item.apelido}}</h2>\n        <span *ngIf="item.classificacao >= 1">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n        <span *ngIf="item.classificacao >= 2">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n        <span *ngIf="item.classificacao >= 3">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n        <span *ngIf="item.classificacao >= 4">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n        <span *ngIf="item.classificacao >= 5">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n        <span *ngIf="1 > item.classificacao">\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        <span *ngIf="2 > item.classificacao">\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        <span *ngIf="3 > item.classificacao">\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        <span *ngIf="4 > item.classificacao">\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        <span *ngIf="5 > item.classificacao">\n          <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n        </span>\n        <!-- <a>{{item.classificacao}}</a> -->\n        <a> • {{item.dataCriacao}} </a>\n\n        <p>Comentário:</p>\n        <ion-card>\n          <ion-card-content>\n            <p>\n              {{item.descricao}}\n            </p>\n          </ion-card-content>\n        </ion-card>\n      </button>\n    </ion-list>\n\n    <ion-list *ngSwitchCase="\'informacoes\'">\n      <h2>{{e?.nome}}</h2>      \n      <ion-card>\n        <ion-card-content>          \n          <p>Códico CNES: {{e?.codCnes}}</p>\n          <p>Descrição: {{e?.descricao}}</p>\n          <p>Logradouro: {{e?.endereco.logradouro}}, {{e?.endereco.numero}}</p>\n          <p>Bairro: {{e?.endereco.bairro}}</p>\n          <p>complemento: {{e?.endereco.complemento}}</p>\n          <p>Cidade: {{e?.endereco.cidade.nome}}</p>\n          <p>Estado: {{e?.endereco.cidade.estado.nome}}</p>\n          <p>Cep: {{e?.endereco.cep}}</p>\n          <p>Natureza Jurídica: {{e?.naturezaJuridica}}</p>\n          <p>Orgão Gestor: {{e?.orgaoGestor}}</p>\n          <p>Telefones: {{e?.telefones}}</p>\n        </ion-card-content>\n      </ion-card>\n    </ion-list>\n\n  </div>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estab-detail/estab-detail.html"*/,
+            selector: 'page-estabelecimentos',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Estabelecimentos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <button  class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>\n      <ion-thumbnail item-start>\n        <img src="assets/imgs/hospital.png">\n      </ion-thumbnail>\n      <h2>{{item.nome}}</h2>\n      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>\n      <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>\n      <span *ngIf="item.score >= 1">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 2">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 3">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 4">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="item.score >= 5">\n        <ion-icon class="iconYellow" name="star"></ion-icon>\n      </span>\n      <span *ngIf="1 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="2 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="3 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="4 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <span *ngIf="5 > item.score">\n        <ion-icon class="iconGrey" name="star-outline"></ion-icon>\n      </span>\n      <a>({{item.count}})</a>\n    </button>\n  </ion-list>\n</ion-content>\n\n\n\n\n  <!-- <span *ngIf=" item.score >= 3">\n    <ion-icon class="iconYellow" name="star-half"></ion-icon>\n  </span> -->'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/estabelecimentos/estabelecimentos.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__services_domain_avaliacao_service__["a" /* AvaliacaoService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_storage_service__["a" /* StorageService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
-    ], EstabDetailPage);
-    return EstabDetailPage;
+            __WEBPACK_IMPORTED_MODULE_2__services_domain_estabelecimento_service__["a" /* EstabelecimentoService */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
+    ], EstabelecimentosPage);
+    return EstabelecimentosPage;
 }());
 
-//# sourceMappingURL=estab-detail.js.map
+// {
+//   id: 1,
+//   nome: "Hospital Springfield",
+//   codCnes: 3323,
+//   telefones: [],
+//   endereco: {
+//       id: 1,
+//       logradouro: "Avenida Principal",
+//       numero: 1000,
+//       bairro: "Bairro",
+//       complemento: "Proximo a Rodovia",
+//       cep: "70999000",
+//       cidade: {
+//           id: 4,
+//           nome: "Jaboatão",
+//           estado: {
+//               id: 1,
+//               nome: "PERNAMBUCO"
+//           }
+//       }
+//   }
+// } 
+//# sourceMappingURL=estabelecimentos.js.map
 
 /***/ })
 

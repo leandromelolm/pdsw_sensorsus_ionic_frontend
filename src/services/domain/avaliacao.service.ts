@@ -13,6 +13,10 @@ export class AvaliacaoService{
         return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/id/?id=${estabelecimento_id}`); // rota paginada
     }
 
+    finAllRatingUser(page: number = 0, linePerPage : number = 12){
+        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&lineperpage=${linePerPage}`)
+    }
+
     insert(obj : NovaAvaliacaoDTO){
         return this.http.post(
             `${API_CONFIG.baseUrl}/api/avaliacoes/new`,
