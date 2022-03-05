@@ -12,5 +12,44 @@ page-estab-detail {
     .divComentar{
         text-align: center;
     }
-    
+
+    .estab-md {
+        padding-left: 0px;
+    }
+
+    ion-label {
+        white-space: normal !important;
+    }
+
+    .iconYellow{
+        color: #f4e424;
+    }
+
+    .iconGrey{
+        color: #bdbdbd;
+    }
+
+    .estab-md {
+        font-size: 1.2rem;
+    }
+
+    .estab-lg {
+        font-size: 1.2rem;
+    }
+
+    .estab-md ion-thumbnail img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .estab-md ion-thumbnail[estab-start] {
+        margin: 0px 0px 0px 0px;
+    }   
+
+    .estab-md ion-thumbnail {
+        margin: 0px 0px 0px 0px;
+        min-width: 55px;
+        min-height: 55px;
+    }
 }
+

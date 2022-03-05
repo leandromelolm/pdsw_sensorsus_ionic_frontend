@@ -25720,6 +25720,45 @@ page-estab-detail .divComentar {
   text-align: center;
 }
 
+page-estab-detail .estab-md {
+  padding-left: 0px;
+}
+
+page-estab-detail ion-label {
+  white-space: normal !important;
+}
+
+page-estab-detail .iconYellow {
+  color: #f4e424;
+}
+
+page-estab-detail .iconGrey {
+  color: #bdbdbd;
+}
+
+page-estab-detail .estab-md {
+  font-size: 1.2rem;
+}
+
+page-estab-detail .estab-lg {
+  font-size: 1.2rem;
+}
+
+page-estab-detail .estab-md ion-thumbnail img {
+  width: 50px;
+  height: 50px;
+}
+
+page-estab-detail .estab-md ion-thumbnail[estab-start] {
+  margin: 0px 0px 0px 0px;
+}
+
+page-estab-detail .estab-md ion-thumbnail {
+  margin: 0px 0px 0px 0px;
+  min-width: 55px;
+  min-height: 55px;
+}
+
 page-estabelecimentos img {
   -webkit-align-self: center;
   -ms-flex-item-align: center;

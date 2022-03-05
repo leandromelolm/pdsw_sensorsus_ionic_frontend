@@ -23,9 +23,15 @@
     
     <ion-list *ngSwitchCase="'avaliacoes'">
 
+      <ion-list>
+        <h2>{{estab?.nome}}</h2> 
+        <p>{{estab?.endereco.cidade.nome}} • {{estab?.endereco.cidade.estado.nome}}</p>
+        <a style="font-size:larger; font-weight:bold;"> {{estab?.score.toFixed(1)}}</a>     
+      </ion-list>
+
       <div class="divComentar">
         <a>Compartilhe sua experiência</a>
-        <button ion-button block inline (click)="avaliar(e)">Avaliar</button>
+        <button ion-button block inline (click)="avaliar(estab)">Avaliar</button>
       </div>
 
       <button ion-item *ngFor="let item of items">
@@ -75,20 +81,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'informacoes'">
-      <h2>{{e?.nome}}</h2>      
+      <h2>{{estab?.nome}}</h2>      
       <ion-card>
         <ion-card-content>          
-          <p>Códico CNES: {{e?.codCnes}}</p>
-          <p>Descrição: {{e?.descricao}}</p>
-          <p>Logradouro: {{e?.endereco.logradouro}}, {{e?.endereco.numero}}</p>
-          <p>Bairro: {{e?.endereco.bairro}}</p>
-          <p>complemento: {{e?.endereco.complemento}}</p>
-          <p>Cidade: {{e?.endereco.cidade.nome}}</p>
-          <p>Estado: {{e?.endereco.cidade.estado.nome}}</p>
-          <p>Cep: {{e?.endereco.cep}}</p>
-          <p>Natureza Jurídica: {{e?.naturezaJuridica}}</p>
-          <p>Orgão Gestor: {{e?.orgaoGestor}}</p>
-          <p>Telefones: {{e?.telefones}}</p>
+          <p>Códico CNES: {{estab?.codCnes}}</p>
+          <p>Descrição: {{estab?.descricao}}</p>
+          <p>Logradouro: {{estab?.endereco.logradouro}}, {{estab?.endereco.numero}}</p>
+          <p>Bairro: {{estab?.endereco.bairro}}</p>
+          <p>complemento: {{estab?.endereco.complemento}}</p>
+          <p>Cidade: {{estab?.endereco.cidade.nome}}</p>
+          <p>Estado: {{estab?.endereco.cidade.estado.nome}}</p>
+          <p>Cep: {{estab?.endereco.cep}}</p>
+          <p>Natureza Jurídica: {{estab?.naturezaJuridica}}</p>
+          <p>Orgão Gestor: {{estab?.orgaoGestor}}</p>
+          <p>Telefones: {{estab?.telefones}}</p>
         </ion-card-content>
       </ion-card>
     </ion-list>

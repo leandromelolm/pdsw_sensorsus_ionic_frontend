@@ -620,8 +620,8 @@ var StorageService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return API_CONFIG; });
 var API_CONFIG = {
-    // baseUrl: "http://localhost:8080"
-    baseUrl: "https://sensorsus-api.herokuapp.com"
+    baseUrl: "http://localhost:8080"
+    // baseUrl: "https://sensorsus-api.herokuapp.com"    
 };
 //# sourceMappingURL=api.config.js.map
 

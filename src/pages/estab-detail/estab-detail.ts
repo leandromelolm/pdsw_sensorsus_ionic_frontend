@@ -14,7 +14,7 @@ import { StorageService } from '../../services/storage.service';
 export class EstabDetailPage {
 
   items : AvaliacaoDTO[];
-  e : EstabelecimentoDTO;
+  estab : EstabelecimentoDTO;
   detail: string = "avaliacoes";  
 
   constructor(
@@ -45,14 +45,14 @@ export class EstabDetailPage {
     this.estabService.findById(estabelecimento_id)
     .subscribe(response =>{
       console.log(response);
-      this.e = response;
+      this.estab = response;
       
     })    
   }
-  avaliar(e: EstabelecimentoDTO){
+  avaliar(estab: EstabelecimentoDTO){
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
-      this.navCtrl.push('AvaliarPage',{estab : e});
+      this.navCtrl.push('AvaliarPage',{estab : estab});
     }else{
       this.showNoLogin();
     }   
