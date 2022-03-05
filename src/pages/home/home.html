@@ -1,12 +1,27 @@
+<ion-header #head [hidden] *ngIf="status">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
 
-  <button ion-button block (click)="signinpage()">Entrar</button>
-  <button ion-button block outline (click)="signup()">Registrar</button>
+  <div [hidden] *ngIf="statusLoginButton">
+    <button ion-button block outline (click)="pageEstabelecimento()">Ver lista de estabelecimentos</button>
+    <button ion-button block (click)="signinpage()">Entrar</button>
+    <button ion-button block outline (click)="signup()">Registrar</button>
+  </div>  
+
+  <h5 (click)="signup()">Últimas avaliações</h5>  
 
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">
       <h2>{{item.nomeEstabelecimento}}</h2>

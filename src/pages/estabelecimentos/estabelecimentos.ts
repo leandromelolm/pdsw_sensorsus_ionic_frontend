@@ -3,6 +3,7 @@ import { IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-an
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { StorageService } from '../../services/storage.service';
 
 @IonicPage()
 @Component({
@@ -10,28 +11,52 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
   templateUrl: 'estabelecimentos.html',
 })
 export class EstabelecimentosPage {
-  
+
   items: EstabelecimentoDTO[];
 
+  status = false;
+  statusLoginButton = true;
+
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public estabelecimentService: EstabelecimentoService,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public storage: StorageService) {
+  }
+
+  pageHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
+  signinpage(){
+    this.navCtrl.push('SignInPage');
+  }
+
+  signup() {
+    this.navCtrl.push('SignupPage');
   }
 
   ionViewDidLoad() {
-    let loader = this.presentLoading();   
+    let loader = this.presentLoading();
     this.estabelecimentService.findAll()
-      .subscribe(response =>{              
-         this.items = response;
-         loader.dismiss();
-       },
-       error => {});
+      .subscribe(response => {
+        this.items = response;
+        loader.dismiss();
+      },
+        error => { });
   }
 
-  showAvaliacoes(estabelecimento_id : string){
-    this.navCtrl.push('EstabDetailPage', {estabelecimento_id : estabelecimento_id});
+  ionViewDidEnter() {
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+      this.status = true;
+      this.statusLoginButton = false;
+    }
+  }
+
+  showAvaliacoes(estabelecimento_id: string) {
+    this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
   }
 
   presentLoading() {
@@ -41,5 +66,9 @@ export class EstabelecimentosPage {
     loader.present();
     return loader;
   }
-  
+
+  showHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
+
 }

@@ -44,6 +44,7 @@ var HomeModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_storage_service__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,16 +59,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl, menu, auth, avaliacaoService, loadingCtrl) {
+    function HomePage(navCtrl, menu, auth, avaliacaoService, loadingCtrl, storage, renderer) {
         this.navCtrl = navCtrl;
         this.menu = menu;
         this.auth = auth;
         this.avaliacaoService = avaliacaoService;
         this.loadingCtrl = loadingCtrl;
+        this.storage = storage;
+        this.renderer = renderer;
+        //@Input("header") head;
+        this.status = false;
+        this.statusLoginButton = true;
         this.items = [];
         this.page = 0;
     }
+    HomePage.prototype.ionViewDidEnter = function () {
+        var localUser = this.storage.getLocalUser();
+        if (localUser && localUser.email) {
+            this.status = true;
+            this.statusLoginButton = false;
+        }
+    };
     HomePage.prototype.ionViewDidLoad = function () {
         this.loadData();
     };
@@ -86,8 +100,8 @@ var HomePage = /** @class */ (function () {
             _this.items = _this.items.concat(response['content']);
             var end = _this.items.length - 1;
             loader.dismiss();
-            console.log(_this.page);
-            console.log(_this.items);
+            // console.log(this.page);
+            //console.log(this.items);
         }, function (error) {
             loader.dismiss();
         });
@@ -99,13 +113,8 @@ var HomePage = /** @class */ (function () {
         loader.present();
         return loader;
     };
-    HomePage.prototype.login = function () {
-        // this.auth.authenticate(this.creds)
-        //   .subscribe(response => {
-        //     this.auth.successfulLogin(response.headers.get('Authorization'));
-        //     this.navCtrl.setRoot('EstabelecimentosPage');
-        //   },
-        //   error => {});  
+    HomePage.prototype.pageEstabelecimento = function () {
+        this.navCtrl.setRoot('EstabelecimentosPage');
     };
     HomePage.prototype.signinpage = function () {
         this.navCtrl.push('SignInPage');
@@ -130,15 +139,12 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/'<ion-content padding>\n\n  <button ion-button block (click)="signinpage()">Entrar</button>\n  <button ion-button block outline (click)="signup()">Registrar</button>\n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">\n      <h2>{{item.nomeEstabelecimento}}</h2>\n      <p>avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>\n      <p>Classificação: {{item.classificacao}}</p>      \n      <p>Comentário:</p>\n        <ion-card>\n          <ion-card-content>\n            <p>\n              {{item.descricao}}\n            </p>\n          </ion-card-content>\n        </ion-card>\n    </button>\n  </ion-list>\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>  \n\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/'<ion-header #head [hidden] *ngIf="status">\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div [hidden] *ngIf="statusLoginButton">\n    <button ion-button block outline (click)="pageEstabelecimento()">Ver lista de estabelecimentos</button>\n    <button ion-button block (click)="signinpage()">Entrar</button>\n    <button ion-button block outline (click)="signup()">Registrar</button>\n  </div>  \n\n  <h5 (click)="signup()">Últimas avaliações</h5>  \n\n  <ion-refresher (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  \n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">\n      <h2>{{item.nomeEstabelecimento}}</h2>\n      <p>avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>\n      <p>Classificação: {{item.classificacao}}</p>      \n      <p>Comentário:</p>\n        <ion-card>\n          <ion-card-content>\n            <p>\n              {{item.descricao}}\n            </p>\n          </ion-card-content>\n        </ion-card>\n    </button>\n  </ion-list>\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>  \n\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]) === "function" && _g || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=home.js.map

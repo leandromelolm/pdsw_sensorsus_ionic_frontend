@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController } from 'ionic-angular';
+import { Component, Input, Renderer2 } from '@angular/core';
+import { Header, IonicPage, MenuController, NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
+import { StorageService } from '../../services/storage.service';
+
 
 @IonicPage()
 @Component({
@@ -11,6 +13,11 @@ import { AvaliacaoDTO } from '../../model/avaliacao.dto';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  //@Input("header") head;
+
+  status = false;
+  statusLoginButton = true;
 
   items : AvaliacaoDTO[] = [];
   page : number = 0;
@@ -20,9 +27,20 @@ export class HomePage {
     public menu: MenuController,
     public auth: AuthService,
     public avaliacaoService: AvaliacaoService,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public storage: StorageService,
+    public renderer: Renderer2) {
 
   }
+
+  ionViewDidEnter() {
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {
+     this.status = true;
+     this.statusLoginButton = false;
+    }
+  }
+
 
   ionViewDidLoad(){
     this.loadData();
@@ -44,8 +62,8 @@ export class HomePage {
         this.items = this.items.concat(response['content']);
         let end = this.items.length - 1;
         loader.dismiss();
-        console.log(this.page);
-        console.log(this.items);
+        // console.log(this.page);
+        //console.log(this.items);
       },
       error => {
         loader.dismiss();
@@ -61,15 +79,8 @@ export class HomePage {
     return loader;
   }
 
-
-
-  login() {
-    // this.auth.authenticate(this.creds)
-    //   .subscribe(response => {
-    //     this.auth.successfulLogin(response.headers.get('Authorization'));
-    //     this.navCtrl.setRoot('EstabelecimentosPage');
-    //   },
-    //   error => {});  
+  pageEstabelecimento(){
+    this.navCtrl.setRoot('EstabelecimentosPage');
   }
 
   signinpage(){

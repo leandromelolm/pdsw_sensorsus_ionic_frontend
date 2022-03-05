@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { AlertController, Nav, NavController, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { EstabelecimentosPage } from '../pages/estabelecimentos/estabelecimentos';
 
 
 @Component({
@@ -11,8 +12,8 @@ import { AuthService } from '../services/auth.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // rootPage: String = 'HomePage';
-  rootPage: String = 'EstabelecimentosPage';
+  rootPage: String = 'HomePage';
+  //rootPage: String = 'EstabelecimentosPage';
 
   pages: Array<{title: string, component: String}>;
 
@@ -20,7 +21,8 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public auth: AuthService) {
+    public auth: AuthService,
+    public alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -45,12 +47,20 @@ export class MyApp {
 
     switch (page.title) {
       case 'Sair':
-      this.auth.AlertLogoutConfirm();
-      this.nav.setRoot('EstabelecimentosPage');
+      //this.auth.AlertLogoutConfirm();
+      //this.exitApp();
+      this.auth.logout();
+      this.nav.setRoot('HomePage');
       break;
 
       default:
       this.nav.setRoot(page.component);
     }
+  }
+
+  exitApp(){
+    // this.auth.logout;
+    // this.nav.setRoot('HomePage');   
+    // this.navCtrl.setRoot('EstabDetailPage');
   }
 }

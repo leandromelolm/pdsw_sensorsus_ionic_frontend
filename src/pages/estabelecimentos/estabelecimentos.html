@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar [hidden] *ngIf="status">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,6 +8,16 @@
 </ion-header>
 
 <ion-content padding>
+
+  <div [hidden] *ngIf="statusLoginButton">
+    <button ion-button block outline (click)="pageHome()"> ver ultimas avaliações</button>
+    <button ion-button block (click)="signinpage()">Entrar</button>
+    <button ion-button block outline (click)="signup()">Registrar</button>
+  </div> 
+
+ 
+  <h5 (click)="signup()">Lista de Estabelecimentos</h5>
+
 
   <ion-list>
     <button  class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>

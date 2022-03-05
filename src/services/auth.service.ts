@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChild } from "@angular/core";
 import { CredenciaisDTO } from "../model/credenciais.dto";
 import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../config/api.config";
 import { LocalUser } from "../model/local_user";
 import { StorageService } from "./storage.service";
 import { JwtHelper } from "angular2-jwt";
-import { AlertController} from "ionic-angular";
+import { AlertController, Nav, NavController} from "ionic-angular";
 
 @Injectable()
 export class AuthService {
@@ -67,12 +67,11 @@ export class AuthService {
             {
               text: 'Sim',
               handler: () =>{
-                this.logout();                              
+                this.logout();                                          
               }
             } 
           ]
         });
         alert.present();
-      }
-
+    }
 }
