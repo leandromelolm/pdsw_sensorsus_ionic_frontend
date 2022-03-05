@@ -25,8 +25,44 @@
 
       <ion-list>
         <h2>{{estab?.nome}}</h2> 
+        <a style="font-size:larger; font-weight:bold;"> {{estab?.score.toFixed(1)}}</a>
+
+        
+          <span *ngIf="estab?.score >= 1">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="estab?.score >= 2">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="estab?.score >= 3">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="estab?.score >= 4">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="estab?.score >= 5">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="1 > estab?.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+          <span *ngIf="2 > estab?.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+          <span *ngIf="3 > estab?.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+          <span *ngIf="4 > estab?.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+          <span *ngIf="5 > estab?.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+
+        <a style="font-size:larger; font-weight:bold;"> ({{estab?.count}})</a>
+
         <p>{{estab?.endereco.cidade.nome}} • {{estab?.endereco.cidade.estado.nome}}</p>
-        <a style="font-size:larger; font-weight:bold;"> {{estab?.score.toFixed(1)}}</a>     
+             
       </ion-list>
 
       <div class="divComentar">
@@ -36,37 +72,37 @@
 
       <button ion-item *ngFor="let item of items">
         <h2>{{item.apelido}}</h2>
-        <span *ngIf="item.classificacao >= 1">
+        <span *ngIf="estab?.score >= 1">
           <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        <span *ngIf="item.classificacao >= 2">
+        <span *ngIf="estab?.score >= 2">
           <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        <span *ngIf="item.classificacao >= 3">
+        <span *ngIf="estab?.score >= 3">
           <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        <span *ngIf="item.classificacao >= 4">
+        <span *ngIf="estab?.score >= 4">
           <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        <span *ngIf="item.classificacao >= 5">
+        <span *ngIf="estab?.score >= 5">
           <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        <span *ngIf="1 > item.classificacao">
+        <span *ngIf="1 > estab?.score">
           <ion-icon class="iconGrey" name="star-outline"></ion-icon>
         </span>
-        <span *ngIf="2 > item.classificacao">
+        <span *ngIf="2 > estab?.score">
           <ion-icon class="iconGrey" name="star-outline"></ion-icon>
         </span>
-        <span *ngIf="3 > item.classificacao">
+        <span *ngIf="3 > estab?.score">
           <ion-icon class="iconGrey" name="star-outline"></ion-icon>
         </span>
-        <span *ngIf="4 > item.classificacao">
+        <span *ngIf="4 > estab?.score">
           <ion-icon class="iconGrey" name="star-outline"></ion-icon>
         </span>
-        <span *ngIf="5 > item.classificacao">
+        <span *ngIf="5 > estab?.score">
           <ion-icon class="iconGrey" name="star-outline"></ion-icon>
         </span>
-        <!-- <a>{{item.classificacao}}</a> -->
+        <!-- <a>{{estab?.score}}</a> -->
         <a> • {{item.dataCriacao}} </a>
 
         <p>Comentário:</p>

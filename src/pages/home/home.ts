@@ -1,5 +1,5 @@
-import { Component, Input, Renderer2 } from '@angular/core';
-import { Header, IonicPage, MenuController, NavController } from 'ionic-angular';
+import { Component, Renderer2 } from '@angular/core';
+import { IonicPage, MenuController, NavController } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
@@ -41,7 +41,6 @@ export class HomePage {
     }
   }
 
-
   ionViewDidLoad(){
     this.loadData();
   }
@@ -57,10 +56,8 @@ export class HomePage {
   loadData(){
     let loader = this.presentLoading();
     this.avaliacaoService.finAllRatingUser(this.page, 10)
-      .subscribe(response =>{
-        let start = this.items.length;
-        this.items = this.items.concat(response['content']);
-        let end = this.items.length - 1;
+      .subscribe(response =>{        
+        this.items = this.items.concat(response['content']);        
         loader.dismiss();
         // console.log(this.page);
         //console.log(this.items);
@@ -69,7 +66,6 @@ export class HomePage {
         loader.dismiss();
       });
   }
-
 
   presentLoading() {
     let loader = this.loadingCtrl.create({

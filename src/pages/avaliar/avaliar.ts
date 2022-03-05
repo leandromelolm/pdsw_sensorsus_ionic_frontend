@@ -7,7 +7,6 @@ import { StorageService } from '../../services/storage.service';
 import { UsuarioService } from '../../services/domain/usuario.service';
 import { UsuarioDTO } from '../../model/usuario.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
-
 import { environment } from '../../environment/environment';
 
 @IonicPage()

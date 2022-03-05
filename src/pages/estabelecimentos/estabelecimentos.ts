@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { IonicPage, Item, ItemSliding, NavController, NavParams } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -44,7 +44,9 @@ export class EstabelecimentosPage {
         this.items = response;
         loader.dismiss();
       },
-        error => { });
+      error => {
+        loader.dismiss();
+      });
   }
 
   ionViewDidEnter() {
