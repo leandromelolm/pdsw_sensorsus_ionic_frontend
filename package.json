@@ -14,7 +14,7 @@
   },
   "engines": {
     "node": "10.19.0",
-    "npm": "6.13.4"    
+    "npm": "6.13.4"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -43,9 +43,10 @@
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.29",
     "@ionic/app-scripts": "3.2.4",
-    "typescript": "2.6.2"    
+    "typescript": "2.6.2"
   },
-  "devDependencies": {    
+  "devDependencies": {
+    "@ionic/lab": "3.2.11"
   },
   "description": "An Ionic project"
 }

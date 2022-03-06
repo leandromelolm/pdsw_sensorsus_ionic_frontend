@@ -14,7 +14,7 @@ export class AvaliacaoService{
     }
 
     finAllRatingUser(page: number = 0, linePerPage : number = 12){
-        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&lineperpage=${linePerPage}`)
+        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&linesPerPage=${linePerPage}`)
     }
 
     insert(obj : NovaAvaliacaoDTO){

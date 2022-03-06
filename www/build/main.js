@@ -74,7 +74,7 @@ var AvaliacaoService = /** @class */ (function () {
     AvaliacaoService.prototype.finAllRatingUser = function (page, linePerPage) {
         if (page === void 0) { page = 0; }
         if (linePerPage === void 0) { linePerPage = 12; }
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/?page=" + page + "&lineperpage=" + linePerPage);
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/?page=" + page + "&linesPerPage=" + linePerPage);
     };
     AvaliacaoService.prototype.insert = function (obj) {
         return this.http.post(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/new", obj, {
@@ -84,10 +84,9 @@ var AvaliacaoService = /** @class */ (function () {
     };
     AvaliacaoService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
     ], AvaliacaoService);
     return AvaliacaoService;
-    var _a;
 }());
 
 //# sourceMappingURL=avaliacao.service.js.map
