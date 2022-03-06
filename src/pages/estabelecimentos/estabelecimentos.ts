@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, MenuController, NavController, NavParams } from 'ionic-angular';
 import { EstabelecimentoDTO } from '../../model/estabelecimentos.dto';
 import { EstabelecimentoService } from '../../services/domain/estabelecimento.service';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
@@ -19,6 +19,7 @@ export class EstabelecimentosPage {
 
   constructor(
     public navCtrl: NavController,
+    public menu: MenuController,
     public navParams: NavParams,
     public estabelecimentService: EstabelecimentoService,
     public loadingCtrl: LoadingController,
@@ -71,6 +72,16 @@ export class EstabelecimentosPage {
 
   showHome() {
     this.navCtrl.setRoot('HomePage');
+  } 
+
+  
+// abrir menu lateral com arrastar
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+    
+  ionViewDidLeave() {
+    this.menu.swipeEnable(false);
   }
 
 }

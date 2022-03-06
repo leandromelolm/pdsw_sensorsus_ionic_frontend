@@ -103,5 +103,15 @@ export class HomePage {
       infiniteScroll.complete();
     }, 1000);
   }
+
+
+// abrir menu lateral com arrastar
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+    
+  ionViewDidLeave() {
+    this.menu.swipeEnable(false);
+  }
   
 }

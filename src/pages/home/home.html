@@ -9,10 +9,18 @@
 
 <ion-content padding>
 
-  <div [hidden] *ngIf="statusLoginButton">
+  <div [hidden] *ngIf="statusLoginButton">    
+    <!-- <button ion-button block (click)="signinpage()">Entrar</button> -->
+    <!-- <button ion-button block outline (click)="signup()">Registrar</button> -->
+    <ion-row>
+      <ion-col>
+        <button ion-button block (click)="signinpage()" expand="block">Entrar</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block outline (click)="signup()" expand="block">Registrar</button>
+      </ion-col>
+    </ion-row>
     <button ion-button block outline (click)="pageEstabelecimento()">Ver lista de estabelecimentos</button>
-    <button ion-button block (click)="signinpage()">Entrar</button>
-    <button ion-button block outline (click)="signup()">Registrar</button>
   </div>  
 
   <h5 (click)="signup()">Últimas avaliações</h5>  
