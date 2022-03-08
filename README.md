@@ -7,6 +7,10 @@ App no Heroku
 
 [https://sensorsus.herokuapp.com/](https://sensorsus.herokuapp.com/)
 
+Rotas backend no heroku (banco de dados mysql)
+
+[https://sensorsus-api.herokuapp.com/swagger-ui.html](https://sensorsus-api.herokuapp.com/swagger-ui.html)
+
 
 Rotas backend no heroku (banco de dados postgresql)
 
