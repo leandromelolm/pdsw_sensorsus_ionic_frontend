@@ -4,55 +4,6 @@ webpackJsonp([7],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AvaliacaoService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_api_config__ = __webpack_require__(57);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AvaliacaoService = /** @class */ (function () {
-    function AvaliacaoService(http) {
-        this.http = http;
-    }
-    AvaliacaoService.prototype.findByEstabelecimentoAvaliacao = function (estabelecimento_id) {
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/id/?id=" + estabelecimento_id); // rota paginada
-    };
-    AvaliacaoService.prototype.finAllRatingUser = function (page, linePerPage) {
-        if (page === void 0) { page = 0; }
-        if (linePerPage === void 0) { linePerPage = 12; }
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/?page=" + page + "&linesPerPage=" + linePerPage);
-    };
-    AvaliacaoService.prototype.insert = function (obj) {
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/new", obj, {
-            observe: 'response',
-            responseType: 'text'
-        });
-    };
-    AvaliacaoService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
-    ], AvaliacaoService);
-    return AvaliacaoService;
-}());
-
-//# sourceMappingURL=avaliacao.service.js.map
-
-/***/ }),
-
-/***/ 157:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsuarioService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(40);
@@ -90,6 +41,69 @@ var UsuarioService = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=usuario.service.js.map
+
+/***/ }),
+
+/***/ 157:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AvaliacaoService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_api_config__ = __webpack_require__(57);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AvaliacaoService = /** @class */ (function () {
+    function AvaliacaoService(http) {
+        this.http = http;
+    }
+    AvaliacaoService.prototype.findByEstabelecimentoAvaliacao = function (estabelecimento_id) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/id/?id=" + estabelecimento_id); // rota paginada
+    };
+    AvaliacaoService.prototype.finAllRatingUser = function (page, linePerPage) {
+        if (page === void 0) { page = 0; }
+        if (linePerPage === void 0) { linePerPage = 12; }
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/?page=" + page + "&linesPerPage=" + linePerPage);
+    };
+    // // Método HTTP: POST - cria uma nova avaliação
+    // insert(obj : NovaAvaliacaoDTO){
+    //     return this.http.post(
+    //         `${API_CONFIG.baseUrl}/api/avaliacoes/new`,
+    //         obj,
+    //         {
+    //             observe: 'response',
+    //             responseType: 'text'
+    //         }
+    //     );
+    // }
+    // Método HTTP: PUT 
+    //cria uma nova avaliação ou altera caso ja exista uma avaliação do feita pelo usuario
+    AvaliacaoService.prototype.insert = function (obj) {
+        return this.http.put(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes", obj, {
+            observe: 'response',
+            responseType: 'text'
+        });
+    };
+    AvaliacaoService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object])
+    ], AvaliacaoService);
+    return AvaliacaoService;
+    var _a;
+}());
+
+//# sourceMappingURL=avaliacao.service.js.map
 
 /***/ }),
 
@@ -209,11 +223,11 @@ webpackEmptyAsyncContext.id = 169;
 
 var map = {
 	"../pages/avaliar/avaliar.module": [
-		691,
+		690,
 		6
 	],
 	"../pages/estab-detail/estab-detail.module": [
-		690,
+		691,
 		5
 	],
 	"../pages/estabelecimentos/estabelecimentos.module": [
@@ -303,8 +317,8 @@ var EstabelecimentoService = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_storage_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__environment_environment__ = __webpack_require__(386);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -400,7 +414,7 @@ var AvaliarPage = /** @class */ (function () {
     };
     AvaliarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-avaliar',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Avaliar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">\n    <div class="title">\n      <h3>{{estabelecimento?.nome}}</h3>\n    </div>\n    <ion-card>\n      <ion-card-content>\n\n        <div class="codigoEstabId" style="display: none;">\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"\n              name="estabelecimentoId" readonly="true"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"\n              readonly="true"></ion-input>\n          </ion-item>\n        </div>\n\n        <p>Código: {{estabelecimento?.id}}</p>\n        <p>CNES: {{estabelecimento?.codCnes}}</p>\n        <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>\n        <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-item>\n      <ion-label>Classificação</ion-label>\n      <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">\n        <ion-option value="1">1 &#9733; </ion-option>\n        <ion-option value="2">2 &#9733;&#9733;</ion-option>\n        <ion-option value="3">3 &#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="4">4 &#9733;&#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Comentário</ion-label>\n      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>\n    </ion-item>\n    \n      <p></p>      \n        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>\n        <a>\n          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>\n        </a>      \n    \n    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>\n\n  </form>\n\n  <button ion-button block outline (click)="back()">Voltar</button>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/,
+            selector: 'page-avaliar',template:/*ion-inline-start:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/pages/avaliar/avaliar.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Avaliar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">\n    <div class="title">\n      <h3>{{estabelecimento?.nome}}</h3>\n    </div>\n    <ion-card>\n      <ion-card-content>\n\n        <div class="codigoEstabId" style="display: none;">\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"\n              name="estabelecimentoId" readonly="true"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"\n              readonly="true"></ion-input>\n          </ion-item>\n        </div>\n\n        <p>Código: {{estabelecimento?.id}}</p>\n        <p>CNES: {{estabelecimento?.codCnes}}</p>\n        <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>\n        <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-item>\n      <ion-label>Classificação</ion-label>\n      <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">\n        <ion-option value="1">1 &#9733; </ion-option>\n        <ion-option value="2">2 &#9733;&#9733;</ion-option>\n        <ion-option value="3">3 &#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="4">4 &#9733;&#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Comentário</ion-label>\n      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>\n    </ion-item>\n    \n      <p></p>      \n        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>\n        <a>\n          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>\n        </a>      \n    \n    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>\n\n  </form>\n\n  <button ion-button block outline (click)="back()">Voltar</button>\n</ion-content>'/*ion-inline-end:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/pages/avaliar/avaliar.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -444,11 +458,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_domain_estabelecimento_service__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_domain_avaliacao_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_domain_avaliacao_service__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__interceptors_error_interceptor__ = __webpack_require__(688);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_auth_service__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_storage_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_domain_usuario_service__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_domain_usuario_service__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__interceptors_auth_interceptor__ = __webpack_require__(689);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ng_recaptcha__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ng_recaptcha___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_ng_recaptcha__);
@@ -488,8 +502,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/estab-detail/estab-detail.module#EstabDetailPageModule', name: 'EstabDetailPage', segment: 'estab-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/avaliar/avaliar.module#AvaliarPageModule', name: 'AvaliarPage', segment: 'avaliar', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/estab-detail/estab-detail.module#EstabDetailPageModule', name: 'EstabDetailPage', segment: 'estab-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estabelecimentos/estabelecimentos.module#EstabelecimentosPageModule', name: 'EstabelecimentosPage', segment: 'estabelecimentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomeModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
@@ -526,7 +540,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 383:
+/***/ 385:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -575,7 +589,7 @@ var environment = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StorageService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_storage_keys_config__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_storage_keys_config__ = __webpack_require__(385);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -620,9 +634,9 @@ var StorageService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return API_CONFIG; });
 var API_CONFIG = {
-    // baseUrl: "http://localhost:8080"
+    baseUrl: "http://localhost:8080"
     // baseUrl: "https://sensorsus-api.herokuapp.com"   // base de dados do mysql
-    baseUrl: "https://sensorsus-api-posgres.herokuapp.com" // base de dados do postgres
+    // baseUrl: "https://sensorsus-api-posgres.herokuapp.com"   // base de dados do postgres
 };
 //# sourceMappingURL=api.config.js.map
 
@@ -700,7 +714,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/'<ion-menu [content]="content" type="overlay">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/app/app.html"*/'<ion-menu [content]="content" type="overlay">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
