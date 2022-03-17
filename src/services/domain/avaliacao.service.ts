@@ -17,21 +17,22 @@ export class AvaliacaoService{
         return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&linesPerPage=${linePerPage}`)
     }
 
-    // // Método HTTP: POST - cria uma nova avaliação
-    // insert(obj : NovaAvaliacaoDTO){
-    //     return this.http.post(
-    //         `${API_CONFIG.baseUrl}/api/avaliacoes/new`,
-    //         obj,
-    //         {
-    //             observe: 'response',
-    //             responseType: 'text'
-    //         }
-    //     );
-    // }
+    // Método HTTP: POST
+    // cria uma nova avaliação
+    insert(obj : NovaAvaliacaoDTO){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/api/avaliacoes/new`,
+            obj,
+            {
+                observe: 'response',
+                responseType: 'text'
+            }
+        );
+    }
 
     // Método HTTP: PUT 
-    //cria uma nova avaliação ou altera caso ja exista uma avaliação do feita pelo usuario
-    insert(obj : NovaAvaliacaoDTO){
+    // cria uma nova avaliação ou altera caso ja exista uma avaliação do feita pelo usuario
+    update(obj : NovaAvaliacaoDTO){
         return this.http.put(
             `${API_CONFIG.baseUrl}/api/avaliacoes`,
             obj,

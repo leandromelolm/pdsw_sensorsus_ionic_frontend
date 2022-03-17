@@ -76,20 +76,17 @@ var AvaliacaoService = /** @class */ (function () {
         if (linePerPage === void 0) { linePerPage = 12; }
         return this.http.get(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/estabelecimento/?page=" + page + "&linesPerPage=" + linePerPage);
     };
-    // // Método HTTP: POST - cria uma nova avaliação
-    // insert(obj : NovaAvaliacaoDTO){
-    //     return this.http.post(
-    //         `${API_CONFIG.baseUrl}/api/avaliacoes/new`,
-    //         obj,
-    //         {
-    //             observe: 'response',
-    //             responseType: 'text'
-    //         }
-    //     );
-    // }
-    // Método HTTP: PUT 
-    //cria uma nova avaliação ou altera caso ja exista uma avaliação do feita pelo usuario
+    // Método HTTP: POST
+    // cria uma nova avaliação
     AvaliacaoService.prototype.insert = function (obj) {
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/new", obj, {
+            observe: 'response',
+            responseType: 'text'
+        });
+    };
+    // Método HTTP: PUT 
+    // cria uma nova avaliação ou altera caso ja exista uma avaliação do feita pelo usuario
+    AvaliacaoService.prototype.update = function (obj) {
         return this.http.put(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes", obj, {
             observe: 'response',
             responseType: 'text'
@@ -385,7 +382,7 @@ var AvaliarPage = /** @class */ (function () {
     AvaliarPage.prototype.avaliarEstab = function () {
         var _this = this;
         console.log(this.novaAvaliacao);
-        this.avaliacaoService.insert(this.novaAvaliacao)
+        this.avaliacaoService.update(this.novaAvaliacao)
             .subscribe(function (response) {
             _this.back();
             _this.showInsertOk(_this.novaAvaliacao.estabelecimentoId);
@@ -416,15 +413,10 @@ var AvaliarPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-avaliar',template:/*ion-inline-start:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/pages/avaliar/avaliar.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Avaliar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">\n    <div class="title">\n      <h3>{{estabelecimento?.nome}}</h3>\n    </div>\n    <ion-card>\n      <ion-card-content>\n\n        <div class="codigoEstabId" style="display: none;">\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"\n              name="estabelecimentoId" readonly="true"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"\n              readonly="true"></ion-input>\n          </ion-item>\n        </div>\n\n        <p>Código: {{estabelecimento?.id}}</p>\n        <p>CNES: {{estabelecimento?.codCnes}}</p>\n        <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>\n        <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-item>\n      <ion-label>Classificação</ion-label>\n      <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">\n        <ion-option value="1">1 &#9733; </ion-option>\n        <ion-option value="2">2 &#9733;&#9733;</ion-option>\n        <ion-option value="3">3 &#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="4">4 &#9733;&#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Comentário</ion-label>\n      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>\n    </ion-item>\n    \n      <p></p>      \n        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>\n        <a>\n          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>\n        </a>      \n    \n    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>\n\n  </form>\n\n  <button ion-button block outline (click)="back()">Voltar</button>\n</ion-content>'/*ion-inline-end:"/home/horta/workspace/ws-vscode/pdsw_sensorsus_ionic_frontend/src/pages/avaliar/avaliar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"],
-            __WEBPACK_IMPORTED_MODULE_2__services_storage_service__["a" /* StorageService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__["a" /* UsuarioService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectorRef"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_storage_service__["a" /* StorageService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__["a" /* UsuarioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__["a" /* UsuarioService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _g || Object])
     ], AvaliarPage);
     return AvaliarPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=avaliar.js.map
