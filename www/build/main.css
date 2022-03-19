@@ -25760,7 +25760,7 @@ page-estab-detail .estab-md ion-thumbnail {
 }
 
 page-estabelecimentos .container {
-  height: 60px;
+  height: 50px;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -25777,7 +25777,11 @@ page-estabelecimentos .container {
 
 page-estabelecimentos .bar-button-menutoggle-md {
   margin: 0 0px;
-  min-width: 44px;
+}
+
+page-estabelecimentos .toolbar-md {
+  padding: 0px;
+  min-height: 0px;
 }
 
 page-estabelecimentos .toolbar-title-md {
@@ -25838,7 +25842,7 @@ page-estabelecimentos .item-md ion-thumbnail {
 }
 
 page-home .container {
-  height: 60px;
+  height: 50px;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -25855,7 +25859,11 @@ page-home .container {
 
 page-home .bar-button-menutoggle-md {
   margin: 0 0px;
-  min-width: 44px;
+}
+
+page-home .toolbar-md {
+  padding: 0px;
+  min-height: 0px;
 }
 
 page-home .toolbar-title-md {
