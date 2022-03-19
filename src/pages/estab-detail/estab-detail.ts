@@ -74,7 +74,7 @@ export class EstabDetailPage {
         {
           text: 'Ok',
           handler: () =>{
-            this.navCtrl.setRoot('HomePage');
+            this.navCtrl.push('SignInPage');
           }
         } 
       ]
