@@ -20,7 +20,7 @@ github backend
 
 [https://github.com/leandromelolm/pdsw_sensorsus_spring_backend](https://github.com/leandromelolm/pdsw_sensorsus_spring_backend)
 
-## • Checar versões instaladas ( versões recomendadas para executar o projeto)
+## • Verificar versões instaladas ( versões recomendadas para executar o projeto)
 ```
 npm -v
   6.13.4
@@ -67,6 +67,11 @@ Lista de versões instaladas localmente
 Selecionar versão especifica (caso a versão não esteja configurada como padrão)
 ```
   nvm use 10.19.0
+```
+
+Deixar marcada versão node específica como padrão
+```
+  nvm alias default 10.19.0
 ```
 
 ## • Rodar Projeto
