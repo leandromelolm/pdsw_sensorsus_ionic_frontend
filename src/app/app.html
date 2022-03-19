@@ -9,21 +9,22 @@
   <ion-content>
 
     <ion-list>     
-      <button  ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>    
-    </ion-list>
-
-    <ion-list [hidden] *ngIf="status">
-      <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-    </ion-list>
 
-    <ion-list [hidden] *ngIf="!status">
-      <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
-        {{p.title}}
-      </button>
+      <ion-list [hidden] *ngIf="status">
+        <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
+          {{p.title}}
+        </button>
+      </ion-list>
+
+      <ion-list [hidden] *ngIf="!status">
+        <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
+          {{p.title}}
+        </button>
+      </ion-list> 
+         
     </ion-list>    
 
   </ion-content>

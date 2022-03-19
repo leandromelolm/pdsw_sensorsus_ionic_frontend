@@ -75,7 +75,7 @@ export class AvaliarPage {
 
   avaliarEstab() {
     console.log(this.novaAvaliacao);
-    this.avaliacaoService.update(this.novaAvaliacao)
+    this.avaliacaoService.insert(this.novaAvaliacao)
       .subscribe(response => {
         this.back();
         this.showInsertOk(this.novaAvaliacao.estabelecimentoId);

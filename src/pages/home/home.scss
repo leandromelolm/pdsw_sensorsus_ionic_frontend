@@ -1,5 +1,27 @@
 page-home {
 
+    .container{
+        // background-color: aqua;
+        height: 60px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .bar-button-menutoggle-md {
+        margin: 0 0px;
+        min-width: 44px;
+    }
+
+    .toolbar-title-md {
+        padding: 0px;
+        font-size: 1.6rem;       
+    }
+
+    .button{
+        margin-left: 0px;
+    }
+
     h3 {
         text-align: center;
     }

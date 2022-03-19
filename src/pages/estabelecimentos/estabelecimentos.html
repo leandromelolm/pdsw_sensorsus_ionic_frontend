@@ -4,24 +4,40 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Estabelecimentos</ion-title>
+    
+    <div class="container">
+      <div class="title">
+        <ion-title>SensorSus</ion-title>
+      </div>
+      <div [hidden] *ngIf="!status" class="buttons">
+        <button ion-button (click)="signinpage()">Entrar</button>
+        <button ion-button (click)="signup()">Registrar</button>
+      </div>      
+    </div>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+  <!-- <ion-fab top right edge>
+    <button navPush="SignInPage" ion-fab mini> Entrar</button>
+   </ion-fab> -->
+
   <div [hidden] *ngIf="statusLoginButton">
     
     <!-- <button ion-button block (click)="signinpage()">Entrar</button> -->
     <!-- <button ion-button block outline (click)="signup()">Registrar</button> -->
-    <ion-row>
+
+    <!-- <ion-row>
       <ion-col>
         <button ion-button block (click)="signinpage()" expand="block">Entrar</button>
       </ion-col>
       <ion-col>
         <button ion-button block outline (click)="signup()" expand="block">Registrar</button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
+
     <button ion-button block outline (click)="pageHome()"> ver ultimas avaliações</button>
   </div> 
 
