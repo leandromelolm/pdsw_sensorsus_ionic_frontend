@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController   } from 'ionic-angular';
+import { MyApp } from '../../app/app.component';
 import { CredenciaisDTO } from '../../model/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
 
@@ -18,6 +19,7 @@ export class SignInPage {
   constructor(
     public navCtrl: NavController, 
     public menu: MenuController,
+    public myapp: MyApp,
     public auth: AuthService) {
 
   }
@@ -44,8 +46,13 @@ export class SignInPage {
       .subscribe(response => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
         this.navCtrl.setRoot('EstabelecimentosPage');
+        this.myapp.status = true;
       },
       error => {});  
+  }
+
+  homePage(){
+    this.navCtrl.setRoot('HomePage');
   }
 
   signup() {

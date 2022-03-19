@@ -39,6 +39,10 @@ export class SignupPage {
       error => {});
   }
 
+  homePage(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
   showInsertOk() {
     let alert = this.alertCtrl.create({
       title: 'Sucesso!',
