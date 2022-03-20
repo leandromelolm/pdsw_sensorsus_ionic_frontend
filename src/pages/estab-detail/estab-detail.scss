@@ -1,24 +1,53 @@
 page-estab-detail {
 
+    .toolbar{
+        // background-color: aqua;
+        height: 40px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content-container{
+        padding: 20px;
+        padding-top: 5px;
+    }
+
     ion-label {
         white-space: normal !important;
      }
+
+     .toolbar-md {
+        padding: 0px;
+        min-height: 0px;
+    }
+
+    .toolbar-title-md {
+        padding: 0px;
+        font-size: 1.6rem;       
+    }
+
+    .button{
+        margin-left: 0px;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
     .iconYellow{
         color: #f4e424;
     }
+
     .iconGrey{
         color: #bdbdbd;
     }
+
     .divComentar{
         text-align: center;
     }
 
     .estab-md {
         padding-left: 0px;
-    }
-
-    ion-label {
-        white-space: normal !important;
     }
 
     .iconYellow{

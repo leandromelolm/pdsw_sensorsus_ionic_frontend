@@ -23,9 +23,26 @@ page-home {
         font-size: 1.6rem;       
     }
 
+    .buttons{
+        padding: 20px;
+
+    }
+
     .button{
         margin-left: 0px;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 1rem;
     }
+
+    .content-container{
+        padding: 20px;
+        padding-top: 5px;
+    }
+
+    ion-label {
+        white-space: normal !important;
+     }
 
     h3 {
         text-align: center;

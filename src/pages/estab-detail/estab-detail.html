@@ -6,7 +6,7 @@
     <ion-title>Detalhes</ion-title>
   </ion-navbar>
 
-  <ion-toolbar no-border-top>
+  <ion-toolbar class="toolbar" no-border-top>
     <ion-segment [(ngModel)]="detail">
       <ion-segment-button value="avaliacoes">
         Avaliações
@@ -24,7 +24,7 @@
     <ion-list *ngSwitchCase="'avaliacoes'">
 
       <ion-list>
-        <h2>{{estab?.nome}}</h2>
+        <h5>{{estab?.nome}}</h5>
         <a style="font-size:larger; font-weight:bold;"> {{estab?.score.toFixed(1)}}</a>
 
 
@@ -164,7 +164,7 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'informacoes'">
-      <h2>{{estab?.nome}}</h2>
+      <h5>{{estab?.nome}}</h5>
       <ion-card>
         <ion-card-content>
           <p>Códico CNES: {{estab?.codCnes}}</p>

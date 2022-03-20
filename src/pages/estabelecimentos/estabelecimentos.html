@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    
+
     <div class="container">
       <div class="title">
         <ion-title>SensorSus</ion-title>
@@ -12,7 +12,7 @@
       <div [hidden] *ngIf="!status" class="buttons">
         <button ion-button (click)="signinpage()">Entrar</button>
         <button ion-button (click)="signup()">Registrar</button>
-      </div>      
+      </div>
     </div>
 
   </ion-navbar>
@@ -20,16 +20,18 @@
 
 <ion-content padding>
 
-  <!-- <ion-fab top right edge>
+  <div class="content-container">
+
+    <!-- <ion-fab top right edge>
     <button navPush="SignInPage" ion-fab mini> Entrar</button>
    </ion-fab> -->
 
-  <div [hidden] *ngIf="statusLoginButton">
-    
-    <!-- <button ion-button block (click)="signinpage()">Entrar</button> -->
-    <!-- <button ion-button block outline (click)="signup()">Registrar</button> -->
+    <div [hidden] *ngIf="statusLoginButton">
 
-    <!-- <ion-row>
+      <!-- <button ion-button block (click)="signinpage()">Entrar</button> -->
+      <!-- <button ion-button block outline (click)="signup()">Registrar</button> -->
+
+      <!-- <ion-row>
       <ion-col>
         <button ion-button block (click)="signinpage()" expand="block">Entrar</button>
       </ion-col>
@@ -38,103 +40,106 @@
       </ion-col>
     </ion-row> -->
 
-    <button ion-button block outline (click)="pageHome()"> ver ultimas avaliações</button>
-  </div> 
-
- 
-  <h5 (click)="signup()">Lista de Estabelecimentos</h5>
+      <button ion-button block outline (click)="pageHome()"> ver ultimas avaliações</button>
+    </div>
 
 
-  <ion-list>
-    <button  class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>
-      <ion-thumbnail item-start>
-        <img src="assets/imgs/hospital.png">
-      </ion-thumbnail>
-      <h2>{{item.nome}}</h2>
-      <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>
+    <h5 (click)="signup()">Lista de Estabelecimentos</h5>
 
-      <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>
-     
-      <span *ngIf="item.score > 0.1">
-        <span *ngIf="0.9 > item.score" >
-          <ion-icon class="iconYellow" name="star-half" ></ion-icon>
+
+    <ion-list>
+      <button class="button" ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.id)" icon-start>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/hospital.png">
+        </ion-thumbnail>
+        <h2>{{item.nome}}</h2>
+        <p>{{item.endereco.cidade.nome}} • {{item.endereco.cidade.estado.nome}}</p>
+
+        <a style="font-size:larger; font-weight:bold;">{{item.score.toFixed(1)}}</a>
+
+        <span *ngIf="item.score > 0.1">
+          <span *ngIf="0.9 > item.score">
+            <ion-icon class="iconYellow" name="star-half"></ion-icon>
+          </span>
         </span>
-      </span>
-      <span *ngIf="item.score >= 1">
-        <ion-icon class="iconYellow" name="star" ></ion-icon>
-      </span>
-
-      <span *ngIf="item.score > 1.1">
-        <span *ngIf="1.9 > item.score" >
-          <ion-icon class="iconYellow" name="star-half" ></ion-icon>
+        <span *ngIf="item.score >= 1">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-      </span>
-      <span *ngIf="item.score >= 2">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
 
-      <span *ngIf="item.score > 2.1">
-        <span *ngIf="2.9 > item.score" >
-          <ion-icon class="iconYellow" name="star-half" ></ion-icon>
+        <span *ngIf="item.score > 1.1">
+          <span *ngIf="1.9 > item.score">
+            <ion-icon class="iconYellow" name="star-half"></ion-icon>
+          </span>
         </span>
-      </span>
-      <span *ngIf="item.score >= 3">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
-
-      <span *ngIf="item.score > 3.1">
-        <span *ngIf="3.9 > item.score" >
-          <ion-icon class="iconYellow" name="star-half" ></ion-icon>
+        <span *ngIf="item.score >= 2">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-      </span>
-      <span *ngIf="item.score >= 4">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
 
-      <span *ngIf="item.score > 4.1">
-        <span *ngIf="4.9 > item.score" >
-          <ion-icon class="iconYellow" name="star-half" ></ion-icon>
+        <span *ngIf="item.score > 2.1">
+          <span *ngIf="2.9 > item.score">
+            <ion-icon class="iconYellow" name="star-half"></ion-icon>
+          </span>
         </span>
-      </span>
-      <span *ngIf="item.score >= 5">
-        <ion-icon class="iconYellow" name="star"></ion-icon>
-      </span>
-
-
-      <!--star-outline - estrela apenas com contorno (sem preenchimento)-->
-
-      <span *ngIf="1 > item.score">
-        <span *ngIf="0.1 > item.score" >
-          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        <span *ngIf="item.score >= 3">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-        
-      </span>
-      <span *ngIf="2 > item.score">
-        <span *ngIf="1.1 > item.score" >
-          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+
+        <span *ngIf="item.score > 3.1">
+          <span *ngIf="3.9 > item.score">
+            <ion-icon class="iconYellow" name="star-half"></ion-icon>
+          </span>
         </span>
-      </span>
-
-      <span *ngIf="3 > item.score">
-        <span *ngIf="2.1 > item.score" >
-          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
-        </span>      
-      </span>
-
-      <span *ngIf="4 > item.score">        
-        <span *ngIf="3.1 > item.score" >
-          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        <span *ngIf="item.score >= 4">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
         </span>
-      </span>
 
-      <span *ngIf="5 > item.score">
-        <span *ngIf="4.1 > item.score" >
-          <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+        <span *ngIf="item.score > 4.1">
+          <span *ngIf="4.9 > item.score">
+            <ion-icon class="iconYellow" name="star-half"></ion-icon>
+          </span>
         </span>
-      </span>
+        <span *ngIf="item.score >= 5">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
 
-      <a>({{item.count}})</a>
 
-    </button>
-  </ion-list>
+        <!--star-outline - estrela apenas com contorno (sem preenchimento)-->
+
+        <span *ngIf="1 > item.score">
+          <span *ngIf="0.1 > item.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+
+        </span>
+        <span *ngIf="2 > item.score">
+          <span *ngIf="1.1 > item.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+        </span>
+
+        <span *ngIf="3 > item.score">
+          <span *ngIf="2.1 > item.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+        </span>
+
+        <span *ngIf="4 > item.score">
+          <span *ngIf="3.1 > item.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+        </span>
+
+        <span *ngIf="5 > item.score">
+          <span *ngIf="4.1 > item.score">
+            <ion-icon class="iconGrey" name="star-outline"></ion-icon>
+          </span>
+        </span>
+
+        <a>({{item.count}})</a>
+
+      </button>
+    </ion-list>
+
+  </div>
+
 </ion-content>

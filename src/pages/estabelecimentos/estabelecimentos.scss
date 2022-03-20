@@ -23,9 +23,22 @@ page-estabelecimentos {
         font-size: 1.6rem;       
     }
 
+    .buttons{
+        padding: 20px;
+
+    }
+
     .button{
         margin-left: 0px;
-    }  
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    
+    .content-container{
+        padding: 20px;
+        padding-top: 5px;
+    }
     
     img{        
         align-self: center;
