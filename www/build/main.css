@@ -25940,7 +25940,7 @@ page-home .buttons {
 }
 
 page-home ion-label {
-  height: 50px;
+  height: auto;
   padding-top: 4px;
 }
 
