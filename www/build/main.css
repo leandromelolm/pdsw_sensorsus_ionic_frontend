@@ -25831,8 +25831,18 @@ page-estabelecimentos .item-md {
   padding-left: 0px;
 }
 
-page-estabelecimentos .item-md p {
+page-estabelecimentos .p {
+  font-size: 10px;
+}
+
+page-estabelecimentos .title-list {
   font-size: 12px;
+  margin-top: 10px;
+}
+
+page-estabelecimentos ion-label {
+  height: 50px;
+  padding-top: 4px;
 }
 
 page-estabelecimentos .button {
@@ -25927,6 +25937,20 @@ page-home .toolbar-title-md {
 
 page-home .buttons {
   padding: 20px;
+}
+
+page-home ion-label {
+  height: 50px;
+  padding-top: 4px;
+}
+
+page-home .p {
+  font-size: 10px;
+}
+
+page-home .title-list {
+  font-size: 12px;
+  margin-top: 10px;
 }
 
 page-home .button {

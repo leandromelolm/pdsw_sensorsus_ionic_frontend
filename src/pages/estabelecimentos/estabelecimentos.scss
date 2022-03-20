@@ -29,11 +29,22 @@ page-estabelecimentos {
     }
 
     .item-md{
-        padding-left: 0px;            
+        padding-left: 0px;                      
     }
 
-    .item-md p{
+    .p{
+        font-size: 10px;        
+    }
+
+    .title-list{
         font-size: 12px;
+        margin-top: 10px; 
+    }
+
+    ion-label{
+        // background-color: red;
+        height: 50px;
+        padding-top: 4px;        
     }
 
     .button{

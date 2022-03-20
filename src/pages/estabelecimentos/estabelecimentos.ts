@@ -77,11 +77,11 @@ export class EstabelecimentosPage {
   
 // abrir menu lateral com arrastar
   ionViewWillEnter() {
-    this.menu.swipeEnable(false);
+    this.menu.swipeEnable(true);
   }
     
   ionViewDidLeave() {
-    this.menu.swipeEnable(false);
+    this.menu.swipeEnable(true);
   }
 
 }
