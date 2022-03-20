@@ -48,7 +48,7 @@
 
     <ion-list>
       <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">
-        <h2>{{item.nomeEstabelecimento}}</h2>
+        <h5>{{item.nomeEstabelecimento}}</h5>
         <p>avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>
         <a>Classificação: {{item.classificacao}}</a>
 

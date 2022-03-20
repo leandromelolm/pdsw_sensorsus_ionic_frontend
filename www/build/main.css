@@ -25933,6 +25933,15 @@ page-home .content-container {
   padding-top: 5px;
 }
 
+page-home .item-md {
+  padding-left: 0px;
+  font-size: 12px;
+}
+
+page-home .p {
+  font-size: 10px;
+}
+
 page-home ion-label {
   white-space: normal !important;
 }
