@@ -25827,6 +25827,14 @@ page-estabelecimentos .buttons {
   padding: 20px;
 }
 
+page-estabelecimentos .item-md {
+  padding-left: 0px;
+}
+
+page-estabelecimentos .item-md p {
+  font-size: 12px;
+}
+
 page-estabelecimentos .button {
   margin-left: 0px;
   padding: 10px;
