@@ -38,6 +38,7 @@ export class EstabDetailPage {
       },
       error =>{
         console.log(error);
+        this.navCtrl.setRoot('EstabelecimentosPage');
       });
   }
   estabelecimentoEnderecoLoad(){
