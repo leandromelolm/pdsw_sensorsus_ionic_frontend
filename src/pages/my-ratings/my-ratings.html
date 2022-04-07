@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>MyRatings</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="container">
+    
+    <div class="col-1">
+    </div>
+
+    <div class="col-10">
+      <h5>Minhas Avaliações</h5>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <ion-list>
+        <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">
+          <h5 class="title-list">{{item.nomeEstabelecimento}}</h5>
+          <p class="p">avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>
+          <a>Classificação: {{item.classificacao}}</a>
+          <span *ngIf="item.classificacao > 0.1">
+            <span *ngIf="0.9 > item.classificacao">
+              <ion-icon class="iconYellow" name="star-half"></ion-icon>
+            </span>
+          </span>
+          <span *ngIf="item.classificacao >= 1">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="item.classificacao > 1.1">
+            <span *ngIf="1.9 > item.classificacao">
+              <ion-icon class="iconYellow" name="star-half"></ion-icon>
+            </span>
+          </span>
+          <span *ngIf="item.classificacao >= 2">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="item.classificacao > 2.1">
+            <span *ngIf="2.9 > item.classificacao">
+              <ion-icon class="iconYellow" name="star-half"></ion-icon>
+            </span>
+          </span>
+          <span *ngIf="item.classificacao >= 3">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="item.classificacao > 3.1">
+            <span *ngIf="3.9 > item.classificacao">
+              <ion-icon class="iconYellow" name="star-half"></ion-icon>
+            </span>
+          </span>
+          <span *ngIf="item.classificacao >= 4">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <span *ngIf="item.classificacao > 4.1">
+            <span *ngIf="4.9 > item.classificacao">
+              <ion-icon class="iconYellow" name="star-half"></ion-icon>
+            </span>
+          </span>
+          <span *ngIf="item.classificacao >= 5">
+            <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+          <p>Comentário:</p>
+          <ion-card>
+            <ion-card-content>
+              <p>
+                {{item.descricao}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </button>
+      </ion-list>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+    <div class="col-1">
+    </div>
+
+  </div>
+
+</ion-content>

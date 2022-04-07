@@ -1,4 +1,9 @@
 page-estabelecimentos {
+    .title-bar{             
+        justify-content: space-between;
+        align-items: center;
+        display: flex;        
+    }
 
     .container{
         // background-color: aqua;
@@ -24,8 +29,7 @@ page-estabelecimentos {
     }
 
     .buttons{
-        padding: 20px;
-
+        padding: 0px 5px 0px 0px;
     }
 
     .item-md{

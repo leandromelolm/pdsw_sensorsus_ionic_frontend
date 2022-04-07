@@ -43,9 +43,11 @@ export class MyApp {
       { title: 'Cadastrar', component: 'SignupPage'}
     ];
 
-    this.pagesLogged = [      
+    this.pagesLogged = [
+      { title: 'Minhas Avaliações', component: 'MyRatingsPage' },      
       { title: 'Meu Perfil', component: 'ProfilePage' },
       { title: 'Sair', component: ''}
+      
     ];
 
     if (storage.getLocalUser() == null){

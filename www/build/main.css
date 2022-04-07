@@ -25793,6 +25793,21 @@ page-estab-detail .estab-md ion-thumbnail {
   min-height: 55px;
 }
 
+page-estabelecimentos .title-bar {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 page-estabelecimentos .container {
   height: 50px;
   -webkit-box-align: center;
@@ -25824,7 +25839,7 @@ page-estabelecimentos .toolbar-title-md {
 }
 
 page-estabelecimentos .buttons {
-  padding: 20px;
+  padding: 0px 5px 0px 0px;
 }
 
 page-estabelecimentos .item-md {
@@ -25905,8 +25920,11 @@ page-estabelecimentos .item-md ion-thumbnail {
   min-height: 55px;
 }
 
-page-home .container {
-  height: 50px;
+page-home .title-bar {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -25915,6 +25933,9 @@ page-home .container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+page-home .container {
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -25936,7 +25957,11 @@ page-home .toolbar-title-md {
 }
 
 page-home .buttons {
-  padding: 20px;
+  padding: 0px 5px 0px 0px;
+}
+
+page-home .label-md {
+  margin: 10px 50px 10px 50px;
 }
 
 page-home ion-label {
@@ -25950,7 +25975,7 @@ page-home .p {
 
 page-home .title-list {
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 page-home .button {
@@ -25958,11 +25983,6 @@ page-home .button {
   padding: 10px;
   border-radius: 4px;
   font-size: 1rem;
-}
-
-page-home .content-container {
-  padding: 20px;
-  padding-top: 5px;
 }
 
 page-home .item-md {
@@ -25993,6 +26013,92 @@ page-home img {
 }
 
 page-home .iconYellow {
+  color: #f4e424;
+}
+
+page-my-ratings .container {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+page-my-ratings .bar-button-menutoggle-md {
+  margin: 0 0px;
+}
+
+page-my-ratings .toolbar-md {
+  padding: 0px;
+  min-height: 0px;
+}
+
+page-my-ratings .toolbar-title-md {
+  padding: 0px;
+  font-size: 1.6rem;
+}
+
+page-my-ratings .label-md {
+  margin: 10px 50px 10px 50px;
+}
+
+page-my-ratings .buttons {
+  padding: 20px;
+}
+
+page-my-ratings ion-label {
+  height: auto;
+  padding-top: 4px;
+}
+
+page-my-ratings .p {
+  font-size: 10px;
+}
+
+page-my-ratings .title-list {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+page-my-ratings .button {
+  margin-left: 0px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+page-my-ratings .content-container {
+  padding: 20px;
+  padding-top: 5px;
+}
+
+page-my-ratings .item-md {
+  padding-left: 0px;
+  font-size: 12px;
+}
+
+page-my-ratings .p {
+  font-size: 10px;
+}
+
+page-my-ratings ion-label {
+  white-space: normal !important;
+}
+
+page-my-ratings h3 {
+  text-align: center;
+}
+
+page-my-ratings img {
+  width: 200px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  margin: auto;
+  display: block;
+  padding: 10px;
+}
+
+page-my-ratings .iconYellow {
   color: #f4e424;
 }
 

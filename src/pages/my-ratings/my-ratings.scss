@@ -1,0 +1,85 @@
+page-my-ratings {
+    .container{        
+        justify-content: space-between;
+    }
+
+    .bar-button-menutoggle-md {
+        margin: 0 0px;
+        // min-width: 44px;
+    }
+
+    .toolbar-md {
+        padding: 0px;
+        min-height: 0px;
+    }
+
+    .toolbar-title-md {
+        padding: 0px;
+        font-size: 1.6rem;       
+    }
+
+    .label-md {
+        margin: 10px 50px 10px 50px;
+    }
+
+    .buttons{
+        padding: 20px;
+
+    }
+
+    ion-label{
+        // background-color: red;
+        height: auto;
+        padding-top: 4px;        
+    }
+
+    .p{
+        font-size: 10px;        
+    }
+
+    .title-list{
+        font-size: 12px;
+        margin-top: 10px; 
+    }
+
+    .button{
+        margin-left: 0px;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    .content-container{
+        padding: 20px;
+        padding-top: 5px;
+    }
+
+    .item-md {
+        padding-left: 0px;
+        font-size: 12px;        
+    }
+
+    .p{
+        font-size: 10px;
+    }
+
+    ion-label {
+        white-space: normal !important;
+     }
+
+    h3 {
+        text-align: center;
+    }
+
+    img{
+        width: 200px;
+        align-self: center;
+        margin: auto;
+        display: block;
+        padding: 10px;
+    }
+
+    .iconYellow{
+        color: #f4e424;
+    }
+}

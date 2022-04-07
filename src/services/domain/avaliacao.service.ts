@@ -13,8 +13,12 @@ export class AvaliacaoService{
         return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/id/?id=${estabelecimento_id}`); // rota paginada
     }
 
-    finAllRatingUser(page: number = 0, linePerPage : number = 12){
-        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&linesPerPage=${linePerPage}`)
+    finAllRatingUser(page: number = 0, linesPerPage : number){
+        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/estabelecimento/?page=${page}&linesPerPage=${linesPerPage}`)
+    }
+    //GET: usuario visualizar suas próprias avaliações (passando ID por parametro)
+    findByIDRatingUser(usuario_id :number, page: number = 0, linesPerPage : number){
+        return this.http.get(`${API_CONFIG.baseUrl}/api/avaliacoes/usuarioid/?id=${usuario_id}&page=${page}&linesPerPage=${linesPerPage}`)
     }
 
     // Método HTTP: POST

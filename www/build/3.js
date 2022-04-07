@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 693:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeModule", function() { return HomeModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular_module__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(699);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyRatingsPageModule", function() { return MyRatingsPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_ratings__ = __webpack_require__(701);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HomeModule = /** @class */ (function () {
-    function HomeModule() {
+var MyRatingsPageModule = /** @class */ (function () {
+    function MyRatingsPageModule() {
     }
-    HomeModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular_module__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */])]
+    MyRatingsPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__my_ratings__["a" /* MyRatingsPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__my_ratings__["a" /* MyRatingsPage */]),
+            ],
         })
-    ], HomeModule);
-    return HomeModule;
+    ], MyRatingsPageModule);
+    return MyRatingsPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=my-ratings.module.js.map
 
 /***/ }),
 
-/***/ 699:
+/***/ 701:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyRatingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_storage_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_avaliacao_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_storage_service__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,68 +62,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl, menu, auth, avaliacaoService, loadingCtrl, storage, renderer) {
+var MyRatingsPage = /** @class */ (function () {
+    function MyRatingsPage(navCtrl, navParams, loadingCtrl, storage, usuarioService, avaliacaoService) {
         this.navCtrl = navCtrl;
-        this.menu = menu;
-        this.auth = auth;
-        this.avaliacaoService = avaliacaoService;
+        this.navParams = navParams;
         this.loadingCtrl = loadingCtrl;
         this.storage = storage;
-        this.renderer = renderer;
-        //@Input("header") head;
-        this.status = false;
-        this.statusLoginButton = true;
+        this.usuarioService = usuarioService;
+        this.avaliacaoService = avaliacaoService;
         this.items = [];
         this.page = 0;
+        this.linesPerPage = 5;
     }
-    HomePage.prototype.ionViewDidEnter = function () {
+    MyRatingsPage.prototype.showAvaliacoes = function (estabelecimento_id) {
+        this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
+    };
+    MyRatingsPage.prototype.ionViewDidLoad = function () {
+        this.UserLogged();
+    };
+    MyRatingsPage.prototype.UserLogged = function () {
+        var _this = this;
         var localUser = this.storage.getLocalUser();
         if (localUser && localUser.email) {
-            this.status = true;
-            this.statusLoginButton = false;
+            this.usuarioService.findByEmail(localUser.email)
+                .subscribe(function (response) {
+                _this.usuario = response;
+                // console.log(this.usuario);  
+                _this.loadData();
+            }, function (error) { });
         }
     };
-    HomePage.prototype.ionViewDidLoad = function () {
-        this.loadData();
-    };
-    HomePage.prototype.showDetail = function (estabelecimento_id) {
-        this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
-    };
-    HomePage.prototype.showAvaliacoes = function (estabelecimento_id) {
-        this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
-    };
-    HomePage.prototype.loadData = function () {
+    MyRatingsPage.prototype.loadData = function () {
         var _this = this;
         var loader = this.presentLoading();
-        this.avaliacaoService.finAllRatingUser(this.page, 10)
+        this.avaliacaoService.findByIDRatingUser(this.usuario.id, this.page, this.linesPerPage)
             .subscribe(function (response) {
             _this.items = _this.items.concat(response['content']);
             loader.dismiss();
             // console.log(this.page);
-            //console.log(this.items);
+            // console.log(this.items);
         }, function (error) {
             loader.dismiss();
         });
     };
-    HomePage.prototype.presentLoading = function () {
+    MyRatingsPage.prototype.presentLoading = function () {
         var loader = this.loadingCtrl.create({
             content: "Aguarde..."
         });
         loader.present();
         return loader;
     };
-    HomePage.prototype.pageEstabelecimento = function () {
-        this.navCtrl.setRoot('EstabelecimentosPage');
-    };
-    HomePage.prototype.signinpage = function () {
-        this.navCtrl.push('SignInPage');
-    };
-    HomePage.prototype.signup = function () {
-        this.navCtrl.push('SignupPage');
-    };
-    HomePage.prototype.doRefresh = function (refresher) {
+    MyRatingsPage.prototype.doRefresh = function (refresher) {
         this.page = 0;
         this.items = [];
         this.loadData();
@@ -128,36 +120,28 @@ var HomePage = /** @class */ (function () {
             refresher.complete();
         }, 1000);
     };
-    HomePage.prototype.doInfinite = function (infiniteScroll) {
+    MyRatingsPage.prototype.doInfinite = function (infiniteScroll) {
         this.page++;
         this.loadData();
         setTimeout(function () {
             infiniteScroll.complete();
         }, 1000);
     };
-    // abrir menu lateral com arrastar
-    HomePage.prototype.ionViewWillEnter = function () {
-        this.menu.swipeEnable(true);
-    };
-    HomePage.prototype.ionViewDidLeave = function () {
-        this.menu.swipeEnable(true);
-    };
-    HomePage = __decorate([
+    MyRatingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/'<ion-header>\n  <!-- <ion-header #head [hidden] *ngIf="status"> -->\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n\n    <div class="container">\n      <div class="title">\n        <ion-title>SensorSus</ion-title>\n      </div>\n      <div [hidden] *ngIf="!status" class="buttons">\n        <button ion-button (click)="signinpage()">Entrar</button>\n        <button ion-button (click)="signup()">Registrar</button>\n      </div>\n    </div>\n\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="content-container">\n\n    <div [hidden] *ngIf="statusLoginButton">\n      <!-- <button ion-button block (click)="signinpage()">Entrar</button> -->\n      <!-- <button ion-button block outline (click)="signup()">Registrar</button> -->\n\n      <!-- <ion-row>\n      <ion-col>\n        <button ion-button block (click)="signinpage()" expand="block">Entrar</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button block outline (click)="signup()" expand="block">Registrar</button>\n      </ion-col>\n    </ion-row> -->\n\n      <button ion-button block outline (click)="pageEstabelecimento()">Ver lista de estabelecimentos</button>\n\n    </div>\n\n    <h5>Últimas avaliações</h5>\n\n    <ion-refresher (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n\n\n    <ion-list>\n      <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">\n        <h5 class="title-list">{{item.nomeEstabelecimento}}</h5>\n        <p class="p">avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>\n        <a>Classificação: {{item.classificacao}}</a>\n\n        <span *ngIf="item.classificacao > 0.1">\n          <span *ngIf="0.9 > item.classificacao">\n            <ion-icon class="iconYellow" name="star-half"></ion-icon>\n          </span>\n        </span>\n        <span *ngIf="item.classificacao >= 1">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n\n        <span *ngIf="item.classificacao > 1.1">\n          <span *ngIf="1.9 > item.classificacao">\n            <ion-icon class="iconYellow" name="star-half"></ion-icon>\n          </span>\n        </span>\n        <span *ngIf="item.classificacao >= 2">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n\n        <span *ngIf="item.classificacao > 2.1">\n          <span *ngIf="2.9 > item.classificacao">\n            <ion-icon class="iconYellow" name="star-half"></ion-icon>\n          </span>\n        </span>\n        <span *ngIf="item.classificacao >= 3">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n\n        <span *ngIf="item.classificacao > 3.1">\n          <span *ngIf="3.9 > item.classificacao">\n            <ion-icon class="iconYellow" name="star-half"></ion-icon>\n          </span>\n        </span>\n        <span *ngIf="item.classificacao >= 4">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n\n        <span *ngIf="item.classificacao > 4.1">\n          <span *ngIf="4.9 > item.classificacao">\n            <ion-icon class="iconYellow" name="star-half"></ion-icon>\n          </span>\n        </span>\n        <span *ngIf="item.classificacao >= 5">\n          <ion-icon class="iconYellow" name="star"></ion-icon>\n        </span>\n\n        <p>Comentário:</p>\n        <ion-card>\n          <ion-card-content>\n            <p>\n              {{item.descricao}}\n            </p>\n          </ion-card-content>\n        </ion-card>\n      </button>\n    </ion-list>\n    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n      <ion-infinite-scroll-content></ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/home/home.html"*/
+            selector: 'page-my-ratings',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/my-ratings/my-ratings.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>MyRatings</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <div class="container">\n    \n    <div class="col-1">\n    </div>\n\n    <div class="col-10">\n      <h5>Minhas Avaliações</h5>\n      <ion-refresher (ionRefresh)="doRefresh($event)">\n        <ion-refresher-content></ion-refresher-content>\n      </ion-refresher>\n      <ion-list>\n        <button ion-item *ngFor="let item of items" (click)="showAvaliacoes(item.estabelecimentoId)">\n          <h5 class="title-list">{{item.nomeEstabelecimento}}</h5>\n          <p class="p">avaliado por {{item.apelido}} em {{item.dataCriacao}} </p>\n          <a>Classificação: {{item.classificacao}}</a>\n          <span *ngIf="item.classificacao > 0.1">\n            <span *ngIf="0.9 > item.classificacao">\n              <ion-icon class="iconYellow" name="star-half"></ion-icon>\n            </span>\n          </span>\n          <span *ngIf="item.classificacao >= 1">\n            <ion-icon class="iconYellow" name="star"></ion-icon>\n          </span>\n          <span *ngIf="item.classificacao > 1.1">\n            <span *ngIf="1.9 > item.classificacao">\n              <ion-icon class="iconYellow" name="star-half"></ion-icon>\n            </span>\n          </span>\n          <span *ngIf="item.classificacao >= 2">\n            <ion-icon class="iconYellow" name="star"></ion-icon>\n          </span>\n          <span *ngIf="item.classificacao > 2.1">\n            <span *ngIf="2.9 > item.classificacao">\n              <ion-icon class="iconYellow" name="star-half"></ion-icon>\n            </span>\n          </span>\n          <span *ngIf="item.classificacao >= 3">\n            <ion-icon class="iconYellow" name="star"></ion-icon>\n          </span>\n          <span *ngIf="item.classificacao > 3.1">\n            <span *ngIf="3.9 > item.classificacao">\n              <ion-icon class="iconYellow" name="star-half"></ion-icon>\n            </span>\n          </span>\n          <span *ngIf="item.classificacao >= 4">\n            <ion-icon class="iconYellow" name="star"></ion-icon>\n          </span>\n          <span *ngIf="item.classificacao > 4.1">\n            <span *ngIf="4.9 > item.classificacao">\n              <ion-icon class="iconYellow" name="star-half"></ion-icon>\n            </span>\n          </span>\n          <span *ngIf="item.classificacao >= 5">\n            <ion-icon class="iconYellow" name="star"></ion-icon>\n          </span>\n          <p>Comentário:</p>\n          <ion-card>\n            <ion-card-content>\n              <p>\n                {{item.descricao}}\n              </p>\n            </ion-card-content>\n          </ion-card>\n        </button>\n      </ion-list>\n      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">\n        <ion-infinite-scroll-content></ion-infinite-scroll-content>\n      </ion-infinite-scroll>\n    </div>\n\n    <div class="col-1">\n    </div>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/my-ratings/my-ratings.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_domain_avaliacao_service__["a" /* AvaliacaoService */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer2"]])
-    ], HomePage);
-    return HomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4__services_storage_service__["a" /* StorageService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__["a" /* UsuarioService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_domain_avaliacao_service__["a" /* AvaliacaoService */]])
+    ], MyRatingsPage);
+    return MyRatingsPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=my-ratings.js.map
 
 /***/ })
 

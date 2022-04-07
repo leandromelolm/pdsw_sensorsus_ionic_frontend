@@ -3,4 +3,5 @@ export interface UsuarioDTO {
     nickName : string;
     email : string;
     senha: string
+    id:number;
 }
