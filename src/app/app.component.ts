@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
+import { UsuarioDTO } from '../model/usuario.dto';
+import { UsuarioService } from '../services/domain/usuario.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,6 +20,7 @@ export class MyApp {
   pagesLoggedout: Array<{title: string, component: String}>;
   pagesLogged: Array<{title: string, component: String}>;
   status = false;
+  usuario: UsuarioDTO;
 
   constructor(
     public platform: Platform, 
@@ -25,13 +28,12 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public auth: AuthService,
     public storage: StorageService,
+    public usuarioService: UsuarioService,
     public alertCtrl: AlertController) {
 
     this.initializeApp();
-
-    // console.log(storage.getLocalUser())
     
-    this.pages = [
+    this.pages = [     
       { title: 'Home', component: 'HomePage' },
       { title: 'Lista de Estabelecimentos', component: 'EstabelecimentosPage' },
       // { title: 'Meu Perfil', component: 'ProfilePage' },
@@ -50,10 +52,11 @@ export class MyApp {
       
     ];
 
-    if (storage.getLocalUser() == null){
-      this.status = false;
+    if (storage.getLocalUser() == null){      
+      this.status = false;      
     } else {
       this.status = true;
+      // this.ionViewDidLoad();
     }
 
     // if (storage.getLocalUser() == null){
@@ -119,5 +122,16 @@ export class MyApp {
       this.nav.setRoot(page.component);
     }
   }
+
+  ionViewDidLoad() {
+    let localUser = this.storage.getLocalUser();
+    if (localUser && localUser.email) {      
+      this.usuarioService.findByEmail(localUser.email)
+        .subscribe(response => {
+          this.usuario = response;          
+        },
+        error => {});   
+    }   
+  } 
 
 }

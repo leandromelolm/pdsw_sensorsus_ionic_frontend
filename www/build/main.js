@@ -452,6 +452,7 @@ var AvaliarPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_auth_service__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_storage_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -467,18 +468,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MyApp = /** @class */ (function () {
-    function MyApp(platform, statusBar, splashScreen, auth, storage, alertCtrl) {
+    function MyApp(platform, statusBar, splashScreen, auth, storage, usuarioService, alertCtrl) {
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
         this.auth = auth;
         this.storage = storage;
+        this.usuarioService = usuarioService;
         this.alertCtrl = alertCtrl;
         this.rootPage = 'HomePage';
         this.status = false;
         this.initializeApp();
-        // console.log(storage.getLocalUser())
         this.pages = [
             { title: 'Home', component: 'HomePage' },
             { title: 'Lista de Estabelecimentos', component: 'EstabelecimentosPage' },
@@ -497,6 +499,7 @@ var MyApp = /** @class */ (function () {
         }
         else {
             this.status = true;
+            // this.ionViewDidLoad();
         }
         // if (storage.getLocalUser() == null){
         //   this.pages = [
@@ -553,21 +556,27 @@ var MyApp = /** @class */ (function () {
                 this.nav.setRoot(page.component);
         }
     };
+    MyApp.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        var localUser = this.storage.getLocalUser();
+        if (localUser && localUser.email) {
+            this.usuarioService.findByEmail(localUser.email)
+                .subscribe(function (response) {
+                _this.usuario = response;
+            }, function (error) { });
+        }
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]) === "function" && _a || Object)
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/'<ion-split-pane>\n  <ion-menu side="left" [content]="content" type="overlay">\n\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>SensorSus</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <div class="menu-list">\n        <div>\n        <ion-list  no-lines>\n          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n            {{p.title}}\n          </button>\n  \n          <ion-list [hidden] *ngIf="status">\n            <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n  \n          <ion-list [hidden] *ngIf="!status">\n            <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-list>\n      </div>\n      <div class="div-github">\n        <ion-list>         \n            <div class="pdsw-content">\n              <a href="https://github.com/leandromelolm">\n                <div class="pdsw-contact-container">\n                  <ion-icon name="logo-github"></ion-icon>\n                  <p class="pdsw-contact-link">/leandromelolm</p>\n                </div>\n              </a>\n            </div>         \n        </ion-list>\n      </div>\n      </div>\n    </ion-content>\n\n  </ion-menu>\n\n  <!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/'<ion-split-pane>\n  <ion-menu side="left" [content]="content" type="overlay">\n\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>SensorSus</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <div class="menu-list">\n        <div>          \n            <!-- <ion-list class="nickname" [hidden] *ngIf="status">\n             <p> Olá, {{usuario?.nickname}}</p>\n            </ion-list> -->\n\n            <ion-list no-lines>\n              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n                {{p.title}}\n              </button>\n\n              <ion-list [hidden] *ngIf="status">\n                <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">\n                  {{p.title}}\n                </button>\n              </ion-list>\n\n              <ion-list [hidden] *ngIf="!status">\n                <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">\n                  {{p.title}}\n                </button>\n              </ion-list>\n            </ion-list>\n        </div>\n        <div class="div-github">\n          <ion-list>\n            <div class="pdsw-content">\n              <a href="https://github.com/leandromelolm">\n                <div class="pdsw-contact-container">\n                  <ion-icon name="logo-github"></ion-icon>\n                  <p class="pdsw-contact-link">/leandromelolm</p>\n                </div>\n              </a>\n            </div>\n          </ion-list>\n        </div>\n      </div>\n    </ion-content>\n\n  </ion-menu>\n\n  <!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__["a" /* UsuarioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__["a" /* UsuarioService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _h || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=app.component.js.map
