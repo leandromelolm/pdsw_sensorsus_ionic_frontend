@@ -15,6 +15,25 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-app.md [padding] .scroll-content{
+.bar-button-menutoggle-md {
+    margin: 0 0px;
+    min-width: 44px;
+}
+
+.toolbar-title-md {
     padding: 10px;
+    font-size: 1.6rem;
+}
+
+.toolbar-md {
+    padding: 0px;
+    min-height: 20px;
+    height: 44px;
+}
+
+.button{
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
 }

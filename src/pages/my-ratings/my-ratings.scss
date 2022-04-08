@@ -1,21 +1,21 @@
 page-my-ratings {
-    .container{        
-        justify-content: space-between;
-    }
+    // .container{
+    //     justify-content: space-between;
+    // }
 
-    .bar-button-menutoggle-md {
-        margin: 0 0px;
-        // min-width: 44px;
-    }
+    // .bar-button-menutoggle-md {
+    //     margin: 0 0px;
+    //     min-width: 44px;
+    // }
 
-    .toolbar-md {
-        padding: 0px;
-        min-height: 0px;
-    }
+    // .toolbar-md {
+    //     padding: 0px;
+    //     min-height: 100px;
+    // }
 
     .toolbar-title-md {
-        padding: 0px;
-        font-size: 1.6rem;       
+        padding: 10px;
+        font-size: 1.6rem;
     }
 
     .label-md {
@@ -24,22 +24,17 @@ page-my-ratings {
 
     .buttons{
         padding: 20px;
-
     }
 
     ion-label{
         // background-color: red;
         height: auto;
-        padding-top: 4px;        
-    }
-
-    .p{
-        font-size: 10px;        
+        padding-top: 4px;
     }
 
     .title-list{
         font-size: 12px;
-        margin-top: 10px; 
+        margin-top: 10px;
     }
 
     .button{
@@ -56,7 +51,7 @@ page-my-ratings {
 
     .item-md {
         padding-left: 0px;
-        font-size: 12px;        
+        font-size: 12px;
     }
 
     .p{
@@ -69,14 +64,6 @@ page-my-ratings {
 
     h3 {
         text-align: center;
-    }
-
-    img{
-        width: 200px;
-        align-self: center;
-        margin: auto;
-        display: block;
-        padding: 10px;
     }
 
     .iconYellow{

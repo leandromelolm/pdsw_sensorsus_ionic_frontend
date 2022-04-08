@@ -45,7 +45,7 @@ var ProfilePageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_usuario_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_domain_usuario_service__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_storage_service__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -108,7 +108,7 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-profile',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Meu Perfil</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div id="profile" class="profile">\n    <ion-avatar size="9" push="3">\n      <img class="circle" [src]="\'assets/imgs/avatar-blank.png\'">\n    </ion-avatar>\n    <h2 text-center>{{usuario?.nomeCompleto}}</h2>\n    <p text-center>Apelido: {{usuario?.nickname}}</p>\n    <p text-center>{{usuario?.email}}</p>\n  </div>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/profile/profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle right>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>SensorSus</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div id="profile" class="profile">\n    <h5>Meu Perfil</h5>\n    <ion-avatar size="9" push="3">\n      <img class="circle" [src]="\'assets/imgs/avatar-blank.png\'">\n    </ion-avatar>\n    <h2 text-center>{{usuario?.nomeCompleto}}</h2>\n    <p text-center>Apelido: {{usuario?.nickname}}</p>\n    <p text-center>{{usuario?.email}}</p>\n  </div>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/profile/profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],

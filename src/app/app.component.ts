@@ -29,7 +29,7 @@ export class MyApp {
 
     this.initializeApp();
 
-    console.log(storage.getLocalUser())
+    // console.log(storage.getLocalUser())
     
     this.pages = [
       { title: 'Home', component: 'HomePage' },
