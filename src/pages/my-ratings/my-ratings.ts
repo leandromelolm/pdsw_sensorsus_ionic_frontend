@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { ActionSheetController, IonicPage, LoadingController, NavController, NavParams, Refresher } from 'ionic-angular';
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { UsuarioDTO } from '../../model/usuario.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';
@@ -13,53 +13,54 @@ import { StorageService } from '../../services/storage.service';
 })
 export class MyRatingsPage {
 
-  items : AvaliacaoDTO[] = [];
-  page : number = 0;
+  items: AvaliacaoDTO[] = [];
+  page: number = 0;
   linesPerPage: number = 5;
 
   usuario: UsuarioDTO;
 
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     public loadingCtrl: LoadingController,
-     public storage: StorageService,
-     public usuarioService: UsuarioService,
-     public avaliacaoService: AvaliacaoService,) {
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    public storage: StorageService,
+    public usuarioService: UsuarioService,
+    public avaliacaoService: AvaliacaoService,
+    public actionSheetController: ActionSheetController) {
   }
 
-  showAvaliacoes(estabelecimento_id : string){
-    this.navCtrl.push('EstabDetailPage', {estabelecimento_id : estabelecimento_id});
+  showAvaliacoes(estabelecimento_id: string) {
+    this.navCtrl.push('EstabDetailPage', { estabelecimento_id: estabelecimento_id });
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.UserLogged();
   }
 
   UserLogged() {
     let localUser = this.storage.getLocalUser();
-    if (localUser && localUser.email) {      
+    if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.usuario = response;  
+          this.usuario = response;
           // console.log(this.usuario);  
-          this.loadData();      
+          this.loadData();
         },
-        error => {});   
+          error => { });
     }
   }
- 
-  loadData(){
+
+  loadData() {
     let loader = this.presentLoading();
     this.avaliacaoService.findByIDRatingUser(this.usuario.id, this.page, this.linesPerPage)
-      .subscribe(response =>{        
-        this.items = this.items.concat(response['content']);        
+      .subscribe(response => {
+        this.items = this.items.concat(response['content']);
         loader.dismiss();
         // console.log(this.page);
         // console.log(this.items);
       },
-      error => {
-        loader.dismiss();
-      });
+        error => {
+          loader.dismiss();
+        });
   }
 
   presentLoading() {
@@ -85,5 +86,40 @@ export class MyRatingsPage {
     setTimeout(() => {
       infiniteScroll.complete();
     }, 1000);
+  }
+
+  async openActionSheet(estabelecimento_id: string, avaliacao_id: string) {
+    const actionSheet = await this.actionSheetController.create({
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Refazer avaliação',
+        icon: 'refresh-circle',
+        handler: () => {
+          this.showAvaliacoes(estabelecimento_id);
+        }
+      }, {
+        text: 'Excluir Avaliação',
+        icon: 'trash',
+        handler: () => {
+          console.log('Deletar clicked');
+          this.avaliacaoService.delete(avaliacao_id);
+          this.navCtrl.setRoot('MyRatingsPage')
+        }
+      }, {
+        text: 'Home',
+        icon: 'home',
+        handler: () => {
+          this.navCtrl.setRoot('HomePage');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 }

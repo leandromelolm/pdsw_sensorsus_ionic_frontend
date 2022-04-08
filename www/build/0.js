@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 697:
+/***/ 696:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27,7 +27,7 @@ var SignupPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__signup__["a" /* SignupPage */]),
             ],
         })
     ], SignupPageModule);
@@ -46,7 +46,7 @@ var SignupPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validators_confirmPassword__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -109,11 +109,11 @@ var SignupPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-signup',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/signup/signup.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Criar Conta</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">\n\n    <ion-item>\n      <ion-label stacked>Nome Completo*</ion-label>\n      <ion-input formControlName="nomeCompleto" type="text" placeholder="Nome"></ion-input>\n    </ion-item>\n    <p class="danger" *ngIf="formGroup.controls.nomeCompleto.dirty && formGroup.controls.nomeCompleto.errors"\n      margin-left>\n      Nome inválido\n    </p>\n\n    <ion-item>\n      <ion-label stacked>Apelido*</ion-label>\n      <ion-input formControlName="nickname" type="text" placeholder="Nome de usuario"></ion-input>\n    </ion-item>\n    <p class="danger" *ngIf="formGroup.controls[\'nickname\'].dirty && formGroup.controls[\'nickname\'].errors" margin-left>\n      Apelido inválido\n    </p>\n\n    <ion-item>\n      <ion-label stacked>E-mail*</ion-label>\n      <ion-input formControlName="email" type="text" placeholder="E-mail"></ion-input>\n    </ion-item>\n    <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>\n      E-mail inválido\n    </p>\n\n    <ion-item>\n      <ion-label stacked>Senha*</ion-label>\n      <ion-input formControlName="senha" type="password" placeholder="Senha"></ion-input>\n    </ion-item>\n    <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>\n      Senha inválido\n    </p>\n\n    <ion-item>\n      <ion-label stacked>Redigite a senha*</ion-label>\n      <ion-input formControlName="senha_confirmar" name="senha_confirmar" type="password" placeholder="Confirmar senha">\n      </ion-input>\n    </ion-item>\n\n    <button ion-button block (click)="submit" [disabled]="formGroup.invalid">Criar conta</button>\n  </form>\n\n  <button ion-button block outline (click)="homePage()" expand="block">Voltar Página Principal</button>\n\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/signup/signup.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_3__services_domain_usuario_service__["a" /* UsuarioService */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
     ], SignupPage);
     return SignupPage;
 }());

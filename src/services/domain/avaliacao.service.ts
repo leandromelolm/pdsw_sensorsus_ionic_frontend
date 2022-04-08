@@ -46,4 +46,10 @@ export class AvaliacaoService{
             }
         );
     }
+
+    // Método HTTP: DELETE
+    delete(avaliacao_id : string){
+        return this.http.delete(`${API_CONFIG.baseUrl}/api/avaliacoes/${avaliacao_id}`)
+        .subscribe(()=>console.log('Delete successful'));
+    }
 }
