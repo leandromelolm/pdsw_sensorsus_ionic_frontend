@@ -1,6 +1,5 @@
-
 <ion-split-pane>
-  <ion-menu  side="left" [content]="content" type="overlay">
+  <ion-menu side="left" [content]="content" type="overlay">
 
     <ion-header>
       <ion-toolbar>
@@ -9,24 +8,39 @@
     </ion-header>
 
     <ion-content>
-      <ion-list no-lines>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-
-        <ion-list [hidden] *ngIf="status">
-          <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
+      <div class="menu-list">
+        <div>
+        <ion-list  no-lines>
+          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
             {{p.title}}
           </button>
+  
+          <ion-list [hidden] *ngIf="status">
+            <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
+              {{p.title}}
+            </button>
+          </ion-list>
+  
+          <ion-list [hidden] *ngIf="!status">
+            <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
+              {{p.title}}
+            </button>
+          </ion-list>
         </ion-list>
-
-        <ion-list [hidden] *ngIf="!status">
-          <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
-            {{p.title}}
-          </button>
+      </div>
+      <div class="div-github">
+        <ion-list>         
+            <div class="pdsw-content">
+              <a href="https://github.com/leandromelolm">
+                <div class="pdsw-contact-container">
+                  <ion-icon name="logo-github"></ion-icon>
+                  <p class="pdsw-contact-link">/leandromelolm</p>
+                </div>
+              </a>
+            </div>         
         </ion-list>
-      </ion-list>
-
+      </div>
+      </div>
     </ion-content>
 
   </ion-menu>
