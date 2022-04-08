@@ -37,3 +37,10 @@
     border-radius: 4px;
     font-size: 1rem;
 }
+ 
+//tirando barra de rolagem do menu
+.scroll-content{
+    overflow-y: auto !important;
+    // overflow-x: hidden !important;
+}
+    

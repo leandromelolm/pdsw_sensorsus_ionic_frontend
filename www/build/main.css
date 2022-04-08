@@ -25719,6 +25719,10 @@ ion-navbar.toolbar {
   font-size: 1rem;
 }
 
+.scroll-content {
+  overflow-y: auto !important;
+}
+
 page-avaliar .title {
   margin: 15px;
 }

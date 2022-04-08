@@ -52,16 +52,16 @@ var AvaliacaoService = /** @class */ (function () {
             responseType: 'text'
         });
     };
+    // Método HTTP: DELETE
     AvaliacaoService.prototype.delete = function (avaliacao_id) {
         return this.http.delete(__WEBPACK_IMPORTED_MODULE_2__config_api_config__["a" /* API_CONFIG */].baseUrl + "/api/avaliacoes/" + avaliacao_id)
             .subscribe(function () { return console.log('Delete successful'); });
     };
     AvaliacaoService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
     ], AvaliacaoService);
     return AvaliacaoService;
-    var _a;
 }());
 
 //# sourceMappingURL=avaliacao.service.js.map
@@ -244,15 +244,15 @@ var map = {
 		4
 	],
 	"../pages/my-ratings/my-ratings.module": [
-		695,
+		693,
 		3
 	],
 	"../pages/profile/profile.module": [
-		693,
+		694,
 		2
 	],
 	"../pages/sign-in/sign-in.module": [
-		694,
+		695,
 		1
 	],
 	"../pages/signup/signup.module": [
@@ -648,9 +648,9 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/estab-detail/estab-detail.module#EstabDetailPageModule', name: 'EstabDetailPage', segment: 'estab-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estabelecimentos/estabelecimentos.module#EstabelecimentosPageModule', name: 'EstabelecimentosPage', segment: 'estabelecimentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomeModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/my-ratings/my-ratings.module#MyRatingsPageModule', name: 'MyRatingsPage', segment: 'my-ratings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sign-in/sign-in.module#SignInPageModule', name: 'SignInPage', segment: 'sign-in', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/my-ratings/my-ratings.module#MyRatingsPageModule', name: 'MyRatingsPage', segment: 'my-ratings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/avaliar/avaliar.module#AvaliarPageModule', name: 'AvaliarPage', segment: 'avaliar', priority: 'low', defaultHistory: [] }
                     ]
