@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActionSheetController, IonicPage, LoadingController, NavController, NavParams, Refresher } from 'ionic-angular';
+import { ActionSheetController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import { AvaliacaoDTO } from '../../model/avaliacao.dto';
 import { UsuarioDTO } from '../../model/usuario.dto';
 import { AvaliacaoService } from '../../services/domain/avaliacao.service';

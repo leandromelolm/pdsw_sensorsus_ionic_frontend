@@ -7,7 +7,7 @@
 
     <div class="title-bar">
       <div class="title">
-        <ion-title>SensorSus</ion-title>
+        <ion-title>Home</ion-title>
       </div>
       <div [hidden] *ngIf="!status" class="buttons">
         <button ion-button (click)="signinpage()">Entrar</button>
@@ -44,7 +44,7 @@
 
       </div>
 
-      <h5>Últimas avaliações</h5>
+      <h5>Feed - Últimas avaliações</h5>
 
       <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
