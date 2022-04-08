@@ -90,6 +90,7 @@ var SignInPage = /** @class */ (function () {
         this.auth.authenticate(this.creds)
             .subscribe(function (response) {
             _this.auth.successfulLogin(response.headers.get('Authorization'));
+            window.location.reload();
             _this.navCtrl.setRoot('EstabelecimentosPage');
             _this.myapp.status = true;
         }, function (error) { });
@@ -104,12 +105,10 @@ var SignInPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-sign-in',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/sign-in/sign-in.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>Entrar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3 style="visibility: hidden">SensorSus</h3>\n\n  <img src="assets/imgs/logo-sensorsus-hospital.png" alt="logo">\n\n  <form>\n    <ion-item>\n      <ion-label stacked>Email</ion-label>\n      <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Senha</ion-label>\n      <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>\n    </ion-item>\n    <button ion-button block (click)="login()">Entrar</button>\n  </form>  \n  <button ion-button block outline (click)="signup()">Registrar</button>\n  <button ion-button block outline (click)="homePage()" expand="block">Voltar Página Principal</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/sign-in/sign-in.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_2__app_app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__app_app_component__["a" /* MyApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_app_component__["a" /* MyApp */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object])
     ], SignInPage);
     return SignInPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=sign-in.js.map

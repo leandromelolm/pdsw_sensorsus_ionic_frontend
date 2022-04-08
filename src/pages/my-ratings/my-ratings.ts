@@ -103,7 +103,8 @@ export class MyRatingsPage {
         handler: () => {
           console.log('Deletar clicked');
           this.avaliacaoService.delete(avaliacao_id);
-          this.navCtrl.setRoot('MyRatingsPage')
+          this.navCtrl.setRoot('MyRatingsPage');
+          this.loadData();
         }
       }, {
         text: 'Home',

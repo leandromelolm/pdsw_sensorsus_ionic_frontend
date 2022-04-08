@@ -9,28 +9,28 @@
 
     <ion-content>
       <div class="menu-list">
-        <div>          
-            <!-- <ion-list class="nickname" [hidden] *ngIf="status">
-             <p> Olá, {{usuario?.nickname}}</p>
-            </ion-list> -->
+        <div>
+          <ion-list class="nickname" [hidden] *ngIf="status">
+            <p> Olá, {{usuario?.nickname}}!</p>
+          </ion-list>
 
-            <ion-list no-lines>
-              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-list no-lines>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+              {{p.title}}
+            </button>
+
+            <ion-list [hidden] *ngIf="status">
+              <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
                 {{p.title}}
               </button>
-
-              <ion-list [hidden] *ngIf="status">
-                <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">
-                  {{p.title}}
-                </button>
-              </ion-list>
-
-              <ion-list [hidden] *ngIf="!status">
-                <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
-                  {{p.title}}
-                </button>
-              </ion-list>
             </ion-list>
+
+            <ion-list [hidden] *ngIf="!status">
+              <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">
+                {{p.title}}
+              </button>
+            </ion-list>
+          </ion-list>
         </div>
         <div class="div-github">
           <ion-list>

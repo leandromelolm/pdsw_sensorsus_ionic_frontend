@@ -45,8 +45,9 @@ export class SignInPage {
     this.auth.authenticate(this.creds)
       .subscribe(response => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
+        window.location.reload();
         this.navCtrl.setRoot('EstabelecimentosPage');
-        this.myapp.status = true;
+        this.myapp.status = true;       
       },
       error => {});  
   }

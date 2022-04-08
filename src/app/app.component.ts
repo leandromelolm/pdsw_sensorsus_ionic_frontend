@@ -16,15 +16,15 @@ export class MyApp {
   rootPage: String = 'HomePage';
   //rootPage: String = 'EstabelecimentosPage';
 
-  pages: Array<{title: string, component: String}>;
-  pagesLoggedout: Array<{title: string, component: String}>;
-  pagesLogged: Array<{title: string, component: String}>;
+  pages: Array<{ title: string, component: String }>;
+  pagesLoggedout: Array<{ title: string, component: String }>;
+  pagesLogged: Array<{ title: string, component: String }>;
   status = false;
   usuario: UsuarioDTO;
 
   constructor(
-    public platform: Platform, 
-    public statusBar: StatusBar, 
+    public platform: Platform,
+    public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public auth: AuthService,
     public storage: StorageService,
@@ -32,49 +32,32 @@ export class MyApp {
     public alertCtrl: AlertController) {
 
     this.initializeApp();
-    
-    this.pages = [     
+
+    this.pages = [
       { title: 'Home', component: 'HomePage' },
       { title: 'Lista de Estabelecimentos', component: 'EstabelecimentosPage' },
       // { title: 'Meu Perfil', component: 'ProfilePage' },
       // { title: 'Sair', component: ''}      
     ];
 
-    this.pagesLoggedout = [      
+    this.pagesLoggedout = [
       { title: 'Entrar', component: 'SignInPage' },
-      { title: 'Cadastrar', component: 'SignupPage'}
+      { title: 'Cadastrar', component: 'SignupPage' }
     ];
 
     this.pagesLogged = [
-      { title: 'Minhas Avaliações', component: 'MyRatingsPage' },      
+      { title: 'Minhas Avaliações', component: 'MyRatingsPage' },
       { title: 'Meu Perfil', component: 'ProfilePage' },
-      { title: 'Sair', component: ''}
-      
+      { title: 'Sair', component: '' }
+
     ];
 
-    if (storage.getLocalUser() == null){      
-      this.status = false;      
+    if (storage.getLocalUser() == null) {
+      this.status = false;
     } else {
       this.status = true;
-      // this.ionViewDidLoad();
+      this.ngOnInit();
     }
-
-    // if (storage.getLocalUser() == null){
-    //   this.pages = [
-    //     { title: 'Home', component: 'HomePage' },
-    //     // { title: 'Meu Perfil', component: 'ProfilePage' },
-    //     { title: 'Lista de Estabelecimentos', component: 'EstabelecimentosPage' },
-    //     { title: 'Sair', component: ''}
-    //   ];
-    // }
-    // if (storage.getLocalUser()){
-    //     this.pages = [
-    //       { title: 'Home', component: 'HomePage' },
-    //       { title: 'Meu Perfil', component: 'ProfilePage' },
-    //       { title: 'Lista de Estabelecimentos', component: 'EstabelecimentosPage' },
-    //       { title: 'Sair', component: ''}
-    //   ];
-    // }
   }
 
   initializeApp() {
@@ -84,54 +67,53 @@ export class MyApp {
     });
   }
 
-  openPage(page : {title:string, component:string}) {
-
+  openPage(page: { title: string, component: string }) {
     switch (page.title) {
       case 'Sair':
-      this.status = false;
-      this.auth.logout();
-      this.nav.setRoot('HomePage');
-      break;
+        this.status = false;
+        this.auth.logout();
+        this.nav.setRoot('HomePage');
+        break;
 
       default:
-      this.nav.setRoot(page.component);
+        this.nav.setRoot(page.component);
     }
   }
 
-  openPageLogged (page : {title:string, component:string}){
-
+  openPageLogged(page: { title: string, component: string }) {
     switch (page.title) {
       case 'Sair':
-      this.status = false;
-      this.auth.logout();
-      this.nav.setRoot('HomePage');
-      break;
+        this.status = false;
+        this.auth.logout();
+        this.nav.setRoot('HomePage');
+        this.removeNameUserMenu();
+        break;
 
       default:
-      this.nav.setRoot(page.component);
+        this.nav.setRoot(page.component);
     }
   }
-  
-  openPageLoggedOut (page : {title:string, component:string}){
+
+  openPageLoggedOut(page: { title: string, component: string }) {
     switch (page.title) {
-      case 'Sair': 
-      this.status = true;
-      break;  
-
-      default:      
-      this.nav.setRoot(page.component);
+      default:
+        this.nav.setRoot(page.component);
     }
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     let localUser = this.storage.getLocalUser();
-    if (localUser && localUser.email) {      
+    if (localUser && localUser.email) {
       this.usuarioService.findByEmail(localUser.email)
         .subscribe(response => {
-          this.usuario = response;          
+          this.usuario = response;
         },
-        error => {});   
-    }   
-  } 
+          error => { });
+    }
+  }
 
+  removeNameUserMenu() {
+    this.usuario = null;
+    // window.location.reload();
+  }
 }
