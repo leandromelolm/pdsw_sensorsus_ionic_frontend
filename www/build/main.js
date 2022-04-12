@@ -188,23 +188,23 @@ var map = {
 		7
 	],
 	"../pages/estab-detail/estab-detail.module": [
-		692,
+		691,
 		6
 	],
 	"../pages/estabelecimentos/estabelecimentos.module": [
-		691,
+		693,
 		5
 	],
 	"../pages/home/home.module": [
-		695,
+		692,
 		4
 	],
 	"../pages/my-ratings/my-ratings.module": [
-		693,
+		694,
 		3
 	],
 	"../pages/profile/profile.module": [
-		694,
+		695,
 		2
 	],
 	"../pages/sign-in/sign-in.module": [
@@ -380,7 +380,7 @@ var AvaliarPage = /** @class */ (function () {
     };
     AvaliarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-avaliar',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Avaliar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">\n    <div class="title">\n      <h3>{{estabelecimento?.nome}}</h3>\n    </div>\n    <ion-card>\n      <ion-card-content>\n\n        <div class="codigoEstabId" style="display: none;">\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"\n              name="estabelecimentoId" readonly="true"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"\n              readonly="true"></ion-input>\n          </ion-item>\n        </div>\n\n        <p>Código: {{estabelecimento?.id}}</p>\n        <p>CNES: {{estabelecimento?.codCnes}}</p>\n        <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>\n        <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-item>\n      <ion-label>Classificação</ion-label>\n      <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">\n        <ion-option value="1">1 &#9733; </ion-option>\n        <ion-option value="2">2 &#9733;&#9733;</ion-option>\n        <ion-option value="3">3 &#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="4">4 &#9733;&#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Comentário</ion-label>\n      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>\n    </ion-item>\n    \n      <p></p>      \n        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>\n        <a>\n          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>\n        </a>      \n    \n    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>\n\n  </form>\n\n  <button ion-button block outline (click)="back()">Voltar</button>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/,
+            selector: 'page-avaliar',template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Avaliar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form (ngSubmit)="avaliarEstab(); $event.preventDefault()">\n    <div class="title">\n      <h3>{{estabelecimento?.nome}}</h3>\n    </div>\n    <ion-card>\n      <ion-card-content>\n\n        <div class="codigoEstabId" style="display: none;">\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.estabelecimentoId" value="{{estabelecimento?.id}}"\n              name="estabelecimentoId" readonly="true"></ion-input>\n          </ion-item>\n          <ion-item>\n            <ion-input [(ngModel)]="novaAvaliacao.usuarioEmail" value="{{usuario?.email}}" name="estabelecimentoId"\n              readonly="true"></ion-input>\n          </ion-item>\n        </div>\n\n        <p>Código: {{estabelecimento?.id}}</p>\n        <p>CNES: {{estabelecimento?.codCnes}}</p>\n        <p>Cidade: {{estabelecimento?.endereco.cidade.nome}}</p>\n        <p>Estado: {{estabelecimento?.endereco.cidade.estado.nome}}</p>\n      </ion-card-content>\n    </ion-card>\n\n    <ion-item>\n      <ion-label>Classificação</ion-label>\n      <ion-select [(ngModel)]="novaAvaliacao.classificacao" name="classificacao">\n        <ion-option value="1">1 &#9733; </ion-option>\n        <ion-option value="2">2 &#9733;&#9733;</ion-option>\n        <ion-option value="3">3 &#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="4">4 &#9733;&#9733;&#9733;&#9733;</ion-option>\n        <ion-option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</ion-option>\n      </ion-select>\n    </ion-item>\n\n    <ion-item>\n      <ion-label stacked>Comentário</ion-label>\n      <ion-textarea [(ngModel)]="novaAvaliacao.descricao" name="descricao" type="text" required=true></ion-textarea>\n    </ion-item>\n    \n      <p></p>      \n        <!-- <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha> -->\n        <a>\n          <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>\n        </a>      \n    \n    <!-- <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button> -->\n    <button ion-button block type="submit" [disabled]="captcha">Salvar Avaliação</button>\n\n  </form>\n\n  <button ion-button block outline (click)="back()">Voltar</button>\n</ion-content>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/pages/avaliar/avaliar.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -510,15 +510,20 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/'<ion-split-pane>\n  <ion-menu side="left" [content]="content" type="overlay">\n\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>SensorSus</ion-title>\n      </ion-toolbar>\n    </ion-header>\n\n    <ion-content>\n      <div class="menu-list">\n        <div>\n          <ion-list class="nickname" [hidden] *ngIf="status">\n            <p> Olá, {{usuario?.nickname}}!</p>\n          </ion-list>\n\n          <ion-list no-lines>\n            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n\n            <ion-list [hidden] *ngIf="status">\n              <button menuClose ion-item *ngFor="let p of pagesLogged" (click)="openPageLogged(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n\n            <ion-list [hidden] *ngIf="!status">\n              <button menuClose ion-item *ngFor="let p of pagesLoggedout" (click)="openPageLoggedOut(p)">\n                {{p.title}}\n              </button>\n            </ion-list>\n          </ion-list>\n        </div>\n        <div class="div-github">\n          <ion-list>\n            <div class="pdsw-content">\n              <a href="https://github.com/leandromelolm">\n                <div class="pdsw-contact-container">\n                  <ion-icon name="logo-github"></ion-icon>\n                  <p class="pdsw-contact-link">/leandromelolm</p>\n                </div>\n              </a>\n            </div>\n          </ion-list>\n        </div>\n      </div>\n    </ion-content>\n\n  </ion-menu>\n\n  <!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/home/melo/ws/pdsw-sensorsus-frontend/pdsw_sensorsus_frontend_ionic/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__["a" /* UsuarioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__["a" /* UsuarioService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _h || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_4__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_5__services_storage_service__["a" /* StorageService */],
+            __WEBPACK_IMPORTED_MODULE_6__services_domain_usuario_service__["a" /* UsuarioService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=app.component.js.map
@@ -597,11 +602,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/avaliar/avaliar.module#AvaliarPageModule', name: 'AvaliarPage', segment: 'avaliar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/estabelecimentos/estabelecimentos.module#EstabelecimentosPageModule', name: 'EstabelecimentosPage', segment: 'estabelecimentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/estab-detail/estab-detail.module#EstabDetailPageModule', name: 'EstabDetailPage', segment: 'estab-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomeModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/estabelecimentos/estabelecimentos.module#EstabelecimentosPageModule', name: 'EstabelecimentosPage', segment: 'estabelecimentos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/my-ratings/my-ratings.module#MyRatingsPageModule', name: 'MyRatingsPage', segment: 'my-ratings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomeModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sign-in/sign-in.module#SignInPageModule', name: 'SignInPage', segment: 'sign-in', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] }
                     ]
@@ -699,8 +704,7 @@ var STORAGE_KEYS = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     recaptcha: {
-        // siteKey: "RECAPTCHA_SITE_KEY_GOES_HERE"
-        siteKey: "6LcADC0eAAAAAId0_AZxT6qivDEREVKWSz0bdKz2"
+        siteKey: "RECAPTCHA_SITE_KEY_GOES_HERE"
     }
 };
 // gerar recaptcha

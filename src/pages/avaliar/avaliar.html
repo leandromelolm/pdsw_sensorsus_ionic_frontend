@@ -47,12 +47,13 @@
     </ion-item>
     
       <p></p>      
-        <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha>
+        <!-- <re-captcha (resolved)="captchaResolved($event)" [siteKey]="siteKey"></re-captcha> -->
         <a>
           <font color="white"> captcha validado? {{isCaptchaValid | json}}</font>
         </a>      
     
-    <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button>
+    <!-- <button ion-button block type="submit" [disabled]="!captcha">Salvar Avaliação</button> -->
+    <button ion-button block type="submit" [disabled]="captcha">Salvar Avaliação</button>
 
   </form>
 
