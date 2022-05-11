@@ -1,26 +1,23 @@
-# pdsw App SensorSus Front End Ionic
-Projeto para disciplina desenvolvimento de sistema web - frontend
+# pdsw App SensorSus Frontend Ionic
+Projeto realizado para disciplina projeto de desenvolvimento de sistema web (pdsw) - frontend
 
 Aplicativo para avaliar estabelecimentos de saúde.
 
-App no Heroku
+App no Heroku:
 
 [https://sensorsus.herokuapp.com/](https://sensorsus.herokuapp.com/)
 
-Rotas backend no heroku (banco de dados mysql)
-
-[https://sensorsus-api.herokuapp.com/swagger-ui.html](https://sensorsus-api.herokuapp.com/swagger-ui.html)
-
-
-Rotas backend no heroku (banco de dados postgresql)
-
-[https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html](https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html)
-
-github backend
+Github backend:
 
 [https://github.com/leandromelolm/pdsw_sensorsus_spring_backend](https://github.com/leandromelolm/pdsw_sensorsus_spring_backend)
 
-## • Verificar versões instaladas ( versões recomendadas para executar o projeto)
+Rotas backend no heroku (banco de dados postgresql):
+
+[https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html](https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html)
+
+
+
+## • Comandos para verificar versões instaladas e versões recomendadas para executar o projeto
 ```
 npm -v
   6.13.4
@@ -74,6 +71,6 @@ Deixar marcada versão node específica como padrão
   nvm alias default 10.19.0
 ```
 
-## • Rodar Projeto
+## • Executar Projeto
 
 * Executar no terminal dentro da raiz do projeto `ionic serve` ou `npm start` para iniciá-lo.
