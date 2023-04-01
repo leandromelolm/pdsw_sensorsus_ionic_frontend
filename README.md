@@ -1,21 +1,11 @@
 # pdsw App SensorSus Frontend Ionic
-Projeto realizado para disciplina projeto de desenvolvimento de sistema web (pdsw) - frontend
+Projeto realizado para disciplina projeto de desenvolvimento de sistema web (pdsw) - Repositório frontend do projeto.
 
 Aplicativo para avaliar estabelecimentos de saúde.
-
-App no Heroku:
-
-[https://sensorsus.herokuapp.com/](https://sensorsus.herokuapp.com/)
 
 Github backend:
 
 [https://github.com/leandromelolm/pdsw_sensorsus_spring_backend](https://github.com/leandromelolm/pdsw_sensorsus_spring_backend)
-
-Rotas backend no heroku (banco de dados postgresql):
-
-[https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html](https://sensorsus-api-posgres.herokuapp.com/swagger-ui.html)
-
-
 
 ## • Comandos para verificar versões instaladas e versões recomendadas para executar o projeto
 ```
