@@ -1,4 +1,4 @@
-# pdsw App SensorSus Frontend Ionic
+# pdsw App SensorSus Frontend Ionic 3
 Projeto realizado para disciplina projeto de desenvolvimento de sistema web (pdsw) - Repositório frontend do projeto.
 
 Aplicativo para avaliar estabelecimentos de saúde.
@@ -26,18 +26,19 @@ ionic -v
   npm install -g ionic@3.19.0 cordova@7.1.0
 ```
 
-## • Instalando o Node usando o gerenciador de versões do Node (https://nodejs.org)
+## • Instalando o Node (https://nodejs.org) usando o gerenciador de versões do Node NVM.
 
 Instalar o nvm ( gerenciador de versões do node)
-```
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh
-``` 
 ``` 
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 ```
 Instalar o script nvm na conta de usuário. Para usá-lo, você deve antes gerar o arquivo .bashrc:
 ``` 
   source ~/.bashrc
+```
+Comando de ajuda do nvm
+``` 
+  nvm --help
 ``` 
 Lista de versões disponíveis remotamente
 ``` 
